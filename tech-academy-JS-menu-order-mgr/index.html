@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>The Pizza Place Order Form</title>
+	<link rel="stylesheet"  href="./css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
+</head>
+<body>
+
+	<div class="main">
+		<div class="header">
+			<h1>The Pizza Place Order Form</h1>
+		</div>
+		<div class="content">
+			<div class="info">
+				<div class="container price">
+					<h2>Base pizza price before ingredient modifications:</h2>
+					<ul>
+						<li>Personal pizza = $6.00</li>
+						<li>Medium pizza = $10.00</li>
+						<li>Large pizza = $14.00</li>
+						<li>XLarge pizza = $16.00</li>
+					</ul>
+				</div>
+				<div class="container order">
+					<div>
+						<h2>Item Total : $ <span class="item-total">0 </span></h2>
+						<button id="place-order">Order Pizza</button>
+						<p class="choose-size">Please choose your size!</p>
+					</div>
+					<div>
+						<h2>Order Total : $ <span class="order-total">0 </span></h2>
+						<button id="checkout">Checkout</button>
+						<p class="order-more">Add another pizza or checkout?</p>
+					</div>
+					<p class="order-started">You've started a new pizza. Would you like to <a href="#" class="continue">Continue Ordering</a>? Or clear the current order and continue to <a href="#" class="checkout">Checkout</a>?</p>
+				</div>
+			</div>
+			
+			<div class="options">
+				<div class="size-options container">
+					<h2>Sizes</h2>
+					<form class="size">
+					  <input type="radio" name="size" value="Personal"> Personal<br>
+					  <input type="radio" name="size" value="Medium"> Medium<br>
+					  <input type="radio" name="size" value="Large"> Large<br> 
+					  <input type="radio" name="size" value="Extra-Large"> Extra Large
+					</form> 
+				</div>
+				
+				<div class="cheese-options container">
+					<h2>Cheese Options</h2>
+					<form class="cheese">
+					  <input type="radio" name="cheese" value="Regular" checked> Regular<br>
+					  <input type="radio" name="cheese" value="None"> No Cheese<br>
+					  <input type="radio" name="cheese" value="Extra-Cheese"> Extra Cheese
+					</form>
+					<p>Extra Cheese: +$3.00 for any size pizza</p>
+				</div>
+				
+				<div class="crust-options container">
+					<h2>Choose Your Crust</h2>
+					<form class="crust">
+					  <input type="radio" name="crust" value="Plain" checked> Plain<br>
+					  <input type="radio" name="crust" value="Garlic-Butter"> Garlic Butter<br>
+					  <input type="radio" name="crust" value="Stuffed"> Cheese Stuffed<br> 
+					  <input type="radio" name="crust" value="Spicy"> Spicy<br> 
+					  <input type="radio" name="crust" value="House-Special"> House Special
+					  <p>Crust: +$3.00 for Cheese Stuffed Crust. All other crusts are complementary.</p>
+					</form> 
+				</div>
+				
+				<div class="sauce-options container">
+					<h2>Choose Your Sauce</h2>
+					<form class="sauce">
+					  <input type="radio" name="sauce" value="Marinara" checked> Marinara<br>
+					  <input type="radio" name="sauce" value="White"> White Sauce<br>
+					  <input type="radio" name="sauce" value="Barbeque"> Barbeque<br> 
+					  <input type="radio" name="sauce" value="None"> No Sauce
+					</form>
+				</div>
+			</div>
+			
+			<div class="veg-options">
+				<h2>Veggie Options</h2>
+				<p>Additional Veggie items (first one is complementary): + $ 1.00 each additional veggie item beyond the first complementary veggie item</p>
+				<form class="veggies">
+				  <input type="checkbox" name="veggie" value="Tomato" > Tomatoes
+				  <input type="checkbox" name="veggie" value="Onion"> Onions
+				  <input type="checkbox" name="veggie" value="Olive"> Olives 
+				  <input type="checkbox" name="veggie" value="Green-Pepper"> Green Peppers 
+				  <input type="checkbox" name="veggie" value="Mushroom"> Mushrooms 
+				  <input type="checkbox" name="veggie" value="Pineapple"> Pineapple 
+				  <input type="checkbox" name="veggie" value="Spinach"> Spinach 
+				  <input type="checkbox" name="veggie" value="Jalapeno"> Jalapeno
+				</form>
+			</div>
+		
+			<div class="meat-options">
+				<h2>Meat Options</h2>
+				<p>Additional Meat items (first one is complementary): + $ 1.00 each additional meat item beyond the first complementary meat item</p>
+				<form class="meats">
+				  <input type="checkbox" name="meat" value="Pepperoni" > Pepperoni
+				  <input type="checkbox" name="meat" value="Sausage"> Sausage
+				  <input type="checkbox" name="meat" value="Canadian-Bacon"> Canadian Bacon 
+				  <input type="checkbox" name="meat" value="Ground-Beef"> Ground Beef 
+				  <input type="checkbox" name="meat" value="Anchovi"> Anchovi
+				  <input type="checkbox" name="meat" value="Chicken"> Chicken
+				</form> 
+			</div>
+			
+			<div class="store-info">
+				<h4>Brand Name and Info</h4>
+				<p>Store Info</p>
+				<p>Address Address Address</p>
+				<p>Note About Delivery</p>
+			</div> 
+			
+			<div class="modal">
+				<button id="close">Close</button>
+				<div class="modal-content">
+				</div>
+			</div>
+			
+		</div>
+	</div>
+		
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/app.js" type="text/javascript" charset="utf-8"></script>	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

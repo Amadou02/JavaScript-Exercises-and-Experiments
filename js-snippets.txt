@@ -1,0 +1,605 @@
+
+Prompts for information then returns it as an alert
+
+var visitorName = prompt('What is your name?')
+alert(visitorName);
+
+
+prompts for name, adds hello, and writes to the screen
+
+var visitor = prompt('What is your name?')
+var message = 'Hello ' + visitor;
+document.write(message);
+
+
+sets a passphrase, logs to console passphrase length, as lowercase, as original, as uppercase
+
+var passphrase = 'Open Sesame';
+console.log(passphrase.length);
+console.log(passphrase.toLowerCase());
+console.log(passphrase);
+console.log(passphrase.toUpperCase());
+
+
+SHOUT! app
+
+var stringToShout = prompt("What should I shout?");
+var shout = stringToShout.toUpperCase();
+shout += "!!!";
+alert(shout);
+
+
+Mad Lib  to Story
+
+var name = prompt('What is your name?')
+var occupation = prompt('What is your occupation?')
+var city = prompt('What city do you live in?')
+var color = prompt('What is your favorite color?')
+
+alert('All Finished!');
+
+story = 'My name is ' + name + '! ';
+story += 'I am a ' + occupation + '. ';
+story += 'I live in ' + '. ';
+story += 'My favorite color is ' + color + '.';
+document.write(story);
+
+
+Mad Lib  to Story with question countdown
+
+var questions = 3;
+var questionsLeft = ' [' + questions + ' questions left]';
+var adjective = prompt('Please type an adjective' + questionsLeft);
+questions -=1;
+questionsLeft = ' [' + questions + ' questions left]';
+var verb = prompt('Please type a verb' + questionsLeft);
+questions -=1;
+questionsLeft = ' [' + questions + ' questions left]';
+var noun = prompt('Please type a noun' + questionsLeft);
+alert('All done. Ready for the message?');
+var sentence = "<h2>There once was a " + adjective;
+sentence += ' programmer who wanted to use JavaScript to ' + verb;
+sentence += ' the ' + noun + '.</h2>';
+document.write(sentence);
+
+
+Seconds Calculator
+
+var secondsPerMin = 60;
+var minsPerHour = 60;
+var hoursPerDay = 24;
+var daysPerWeek = 7;
+var weeksPerYear = 52;
+var secondsPerDay = secondsPerMin * minsPerHour * hoursPerDay;
+document.write('There are ' + secondsPerDay + ' seconds in a day. ');
+var yearsAlive = 40;
+var secondsAlive = secondsPerMin * minsPerHour * hoursPerDay * daysPerWeek * weeksPerYear * yearsAlive;
+document.write('I\'ve been alive for more than ' + secondsAlive + ' seconds!');
+
+
+Random Number Die 1-6
+
+var dieRoll = Math.floor(Math.random() * 6 ) + 1;
+alert('You rolled a ' + dieRoll);
+
+
+Random number from 0 to number provided
+
+var userNumber = parseInt(prompt('Please provide a whole number'));
+randomNumber = Math.floor(Math.random() * userNumber) + 1;
+document.write(randomNumber);
+
+
+if/else conditional
+
+var answer = prompt('What programming language is the name of a gem?');
+if (answer.toUpperCase() === 'RUBY' ) {
+  document.write("<p>That's right!</p>");
+} else {
+  document.write("<p>Incorrect!</p>");
+}
+
+
+guess the random number
+
+var randomNumber = Math.floor(Math.random() * 6 ) + 1;
+var guess = prompt('I am thinking of a number between 1 and 6. What is it?');
+if (parseInt(guess) === randomNumber) {
+  document.write('<p>You guessed the number!</p>');
+} else {
+  document.write('<p>Sorry. the number was ' + randomNumber + ' </p>');
+}
+
+
+extended guess the random number
+
+var correctGuess = false;
+var randomNumber = Math.floor(Math.random() * 6 ) + 1;
+var guess = prompt('I am thinking of a number between 1 and 6. What is it?');
+if (parseInt(guess) === randomNumber ) {
+  correctGuess = true;
+} else if (parseInt(guess) < randomNumber) {
+  var guessMore = prompt('Try again. The number I am thinking of is more than ' + guess);
+  if (parseInt(guessMore) === randomNumber) {
+    correctGuess = true;
+  }                         
+} else if (parseInt(guess) > randomNumber){
+  var guessLess = prompt('Try again. The number I am thinking of is less than ' + guess);
+  if (parseInt(guessLess) === randomNumber) {
+    correctGuess = true;
+  }   
+}
+if ( correctGuess ) {
+    document.write('<p>You guessed the number!</p>');
+} else {
+    document.write('<p>Sorry. The number was ' + randomNumber + '.</p>');
+}
+
+
+quiz challenge
+
+var correctAnswers = 0;
+
+var name = prompt('What is your name?');
+if (name.toLowerCase() === 'daniel') {
+  correctAnswers += 1;
+  alert('Correct!');
+} else {
+  alert('Mehhhh!');
+}
+var age =  parseInt(prompt('What is your age?'));
+if (age === 40) {
+  correctAnswers += 1;
+  alert('Correct!');
+} else {
+  alert('Mehhhh!');
+}
+var name = prompt('Where were you born?');
+if (name.toLowerCase() === 'san jose') {
+  correctAnswers += 1;
+  alert('Correct!');
+} else {
+  alert('Mehhhh!');
+}
+var name = prompt('What is your favorite color?');
+if (name.toLowerCase() === 'rainbow') {
+  correctAnswers += 1;
+  alert('Correct!');
+} else {
+  alert('Mehhhh!');
+}
+var name = prompt('What city do you live in?');
+if (name.toLowerCase() === 'portland') {
+  correctAnswers += 1;
+  alert('Correct!');
+} else {
+  alert('Mehhhh!');
+}
+
+alert('You have answered ' + correctAnswers + ' correctly!');
+
+if (correctAnswers > 3) {
+  document.write('You\'ve earned a Gold Star!');
+}
+else if (correctAnswers > 1) {
+  document.write('You\'ve earned a Silver Star!');
+} 
+else if (correctAnswers === 1){
+  document.write('You\ve won a Bronze Star!');
+} else {
+  document.write('Loser!...You\re really bad at this.');
+}
+
+
+Function to generate random number between 0 and number provided
+
+function getRandomNumber( upper ) {
+  var randomNumber = Math.floor( Math.random() * upper ) + 1; 
+  return(randomNumber);
+}
+console.log(getRandomNumber(1000));
+
+
+Function to calculate the area of a rectangle
+
+function getArea(width, length, unit) {
+  var area = width * length;
+  return area + ' ' + unit;
+}
+console.log(getArea(10, 20, 'sq ft'));
+
+
+Function to return random number between two bounds
+
+function getRandomNumber( lower, upper ) {
+  return Math.floor(Math.random() * (upper - lower + 1)) + lower; 
+}
+console.log(getRandomNumber(1, 1000));
+
+
+Function to return random number between two bounds w/ error message
+
+function getRandomNumber( lower, upper ) {
+  if (isNaN(lower) || isNaN(upper) {
+  	throw new Error('You must enter 2 numbers foolio!');  
+  }
+  return Math.floor(Math.random() * (upper - lower + 1)) + lower; 
+}
+
+console.log(getRandomNumber(5, 10));
+console.log(getRandomNumber('a', 10));
+
+
+loop to generate random numbers 
+
+function randomNumber(upper) {
+  return Math.floor( Math.random() * upper ) + 1;
+}
+
+var counter = 0;
+while (counter < 10000) {
+  var randNum =  randomNumber(9);
+  document.write(randNum + ' ');
+  counter += 1;
+}
+
+var randomNumber = getRandomNumber(10);
+var guess;
+var guessCount = 0;
+var correctGuess = false;
+
+function getRandomNumber( upper ) {
+  var num = Math.floor(Math.random() * upper) + 1; 
+  return num;
+}
+
+
+while loop...computer guesses random number
+
+var upper = 10000;
+var randomNumber = getRandomNumber(upper);
+var guess;
+var attempts = 0;
+
+function getRandomNumber(upper) {
+  return Math.floor( Math.random() * upper ) + 1;
+}
+
+while (guess !== randomNumber) {
+  guess = getRandomNumber(upper);
+  attempts += 1;
+}
+document.write('<p>The reandom number was: ' + randomNumber + '</p>');
+document.write('<p>It took the computer ' + attempts + ' attempts to get it right.</p>');
+
+
+Do While loop random number guessing game
+
+do {
+  guess = prompt('I am thinking of a number between 1 and 10. What is it?');
+  guessCount += 1;
+  if (parseInt(guess) === randomNumber) {
+    correctGuess = true;
+  }
+} while ( ! correctGuess )
+document.write('<h1>You guessed the number!</h1>');
+document.write('It took you ' + guessCount + ' tries to guess the number ' + randomNumber);
+
+For loop to add divs to a page
+
+var html = '';
+for (var i = 1; i <= 69; i += 1) {
+  html += '<div>' + i +'</div>';
+}
+document.write(html);
+
+
+Random colored circles to the page
+
+var html = '';
+var red;
+var green;
+var blue;
+var rgbColor;
+
+for (i = 0; i < 10; i += 1) {
+  red = Math.floor(Math.random() * 256 );
+  green = Math.floor(Math.random() * 256 );
+  blue = Math.floor(Math.random() * 256 );
+  rgbColor = 'rgb(' + red + ',' + green + ',' + blue + ')';
+  html += '<div style="background-color:' + rgbColor + '"></div>';
+}
+document.write(html);
+
+
+
+Checks the grocery store inventory
+
+var inStock = [ 'apples', 'eggs', 'milk', 'cookies', 'cheese', 'bread', 'lettuce', 'carrot', 'broccoli', 'pizza', 'potato', 'crackers', 'onion', 'tofu', 'frozen dinner', 'cucumber'];
+var search;
+
+function print(message) {
+  document.write( '<p>' + message + '</p>');
+}
+
+while (true) {
+  search = prompt("Search for a product in our store. Type 'list' to show all of the products and 'quit' to exit.");
+  search = search.toLowerCase();
+  if (search === 'quit'){
+    break;
+  } else if (search === 'list') { 
+    print (inStock.join(', '));
+  } else {
+    if (inStock.indexOf(search) > -1) {
+      print('Yes, we have ' + search + ' in the store.');
+    } else {
+      print (search + ' is not in stock.');
+    }
+  }
+}
+
+
+
+Prints a two dimensional array of songs and artist
+
+var playList = [
+  ['I Did It My Way', 'Frank Sinatra'],
+  ['Respect', 'Aretha Franklin'],
+  ['Imagine', 'John Lennon'],
+  ['Born to Run', 'Bruce Springsteen'],
+  ['Louie Louie', 'The Kingsmen'],
+  ['Maybellene', 'Chuck Berry']
+];
+
+function print(message) {
+  document.write(message);
+}
+
+function printSongs( songs) {
+  var listHTML = '<ol>';
+  for ( var i = 0; i < songs.length; i += 1) {
+    listHTML += '<li>' + songs[i][0] + ' by' + songs[i][1] + '</li>';
+  }
+  listHTML += '</ol>';
+  print(listHTML);
+}
+
+printSongs(playList);
+
+
+
+
+Quiz from 2d array (my solution)
+
+function print(message) {
+  document.write(message);
+}
+
+var questions = [
+  ['What is your name?', 'daniel'],
+  ['Where were you born?', 'san jose'],
+  ['Where do you live now?', 'portland'],
+  ['What is your occupation?', 'web developer'],
+  ['What is your favorite color?', 'green'],
+  ['What is your favorite pastime?', 'coding']
+];
+
+var counter = 0;
+var correct = [];
+var wrong = [];
+
+for (var i = 0; i < questions.length; i += 1){
+  var answer = prompt(questions[i][0]);
+  answer = answer.toLowerCase();
+  if (answer === questions[i][1]) {
+    counter += 1;
+    correct.push(questions[i][0]);
+  } else {
+    wrong.push(questions[i][0]);
+  }
+} 
+print ('You got ' + counter + ' question(s) right.');
+print (correct.join(' '));
+print (wrong.join(' '));
+
+//'You got these questions correct.'
+
+//'You got these questions wrong.'
+
+
+Quiz from 2d array (their solution)
+
+var questions = [
+  ['How many states are in the United States?', 50],
+  ['How many continents are there?', 7],
+  ['How many legs does an insect have?', 6]
+];
+var correctAnswers = 0;
+var question;
+var answer;
+var response;
+var html;
+
+function print(message) {
+  document.write(message);
+}
+
+for (var i = 0; i < questions.length; i += 1) {
+  question = questions[i][0];
+  answer = questions[i][1];
+  response = prompt(question);
+  response = parseInt(response);
+  if (response === answer) {
+    correctAnswers += 1;
+  } 
+}
+
+html = "You got " + correctAnswers + " question(s) right."
+print(html);
+
+
+
+
+Quiz from 2d array (their finished solution)
+
+var questions = [
+  ['How many states are in the United States?', 50],
+  ['How many continents are there?', 7],
+  ['How many legs does an insect have?', 6]
+];
+var correctAnswers = 0;
+var question;
+var answer;
+var response;
+var html;
+var correct = [];
+var wrong = [];
+
+function buildList(arr) {
+  var listHTML = '<ol>';
+  for (var i = 0; i < arr.length; i += 1){
+    listHTML += '<li>' + arr[i] + '</li>';
+   }
+  listHTML += '</ol>';
+  return listHTML;
+}
+
+for (var i = 0; i < questions.length; i += 1) {
+  question = questions[i][0];
+  answer = questions[i][1];
+  response = prompt(question);
+  response = parseInt(response);
+  if (response === answer) {
+    correctAnswers += 1;
+    correct.push(question);
+  } else {
+    wrong.push(question);
+  }
+}
+
+html = "You got " + correctAnswers + " questions(s) right.";
+html += '<h2>You got these questions correct:</h2>';
+html += buildList(correct);
+html += '<h2>You got these questions wrong:</h2>';
+html += buildList(wrong);
+print(html);
+
+
+
+an array of objects
+
+var students = [
+  {
+    name: 'Daniel',
+    track: 'Front End Development',
+    achievements: 1000,
+    points: 1000000
+  },
+  {
+    name: 'Deenie',
+    track: 'Nice Lady',
+    achievements: 6,
+    points: 78378
+  },
+  {
+    name: 'Sage',
+    track: 'First Grade',
+    achievements: 10,
+    points: 5000
+  },
+  {
+    name: 'Atticus',
+    track: 'All The Baby',
+    achievements: 0,
+    points: 1
+  },
+  {
+    name: 'Hermes',
+    track: 'Jerk',
+    achievements: 2,
+    points: 0
+  },
+]
+
+
+
+prints items from above array of objects
+
+var message = '';
+var student;
+
+function print(message) {
+  var outputDiv = document.getElementById('output');
+  outputDiv.innerHTML = message;
+}
+
+for (var i = 0; i < students.length; i += 1) {
+  student = students[i];
+  message += '<h2>Student: ' + student.name + '</h2>';
+  message += '<p>Track: ' + student.track + '</p>';
+  message += '<p>Points: ' + student.points + '</p>';
+  message += '<p>Achievements: ' + student.achievements + '</p>';
+}
+
+print(message);
+
+
+
+
+prints items w/ selective prompt box from above array of objects
+
+var message = '';
+var student;
+var search;
+
+function print(message) {
+  var outputDiv = document.getElementById('output');
+  outputDiv.innerHTML = message;
+}
+
+function getStudentReport(student) {
+  var report = '<h2>Student: ' + student.name + '</h2>';
+  report += '<p>Track: ' + student.track + '</p>';
+  report += '<p>Points: ' + student.points + '</p>';
+  report += '<p>Achievements: ' + student.achievements + '</p>';
+  return report;
+}
+
+while (true) {
+  search = prompt('What student are you searching for? Type their "Name". When you are finished type "quit".');
+  if (search === null || search.toLowerCase() === 'quit') {
+    break;
+  }
+  for (var i = 0; i < students.length; i += 1) {
+    student = students[i];
+    if (student.name === search) {
+      message = getStudentReport(student); 
+      print(message);
+    }    
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

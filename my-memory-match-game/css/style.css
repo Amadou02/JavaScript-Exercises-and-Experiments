@@ -1,0 +1,58 @@
+#match-game .content {
+	background:#c6e9ff;
+	width:80%;
+	margin:0 auto;
+	padding-top:3%;
+	border-left:0;
+	border-right:0;
+	height:800px;
+}
+
+#match-game .content h2, #match-game .content p {
+	text-align:center;
+}
+
+#match-game .content h2 {
+		color:#575757;
+		font-size:32px;
+}
+
+#match-game .content p, #match-game .content button {
+		color:#575757;
+		font-weight:bold;
+		font-size:22px;
+}
+
+#match-game .content button {
+	padding:5px 10px;
+	display:block;
+    margin:0 auto;
+}
+
+#match-game .description {
+	margin-bottom:0;
+}
+
+#match-game a {
+	display:block;
+}
+
+#match-game ul {
+	overflow:hidden;
+	padding-left:0;
+}
+
+#match-game ul li {
+	list-style-type:none;
+	width:11%;
+	margin-left:2.9%;
+	float:left;
+	margin-bottom:3%;
+	height:126px;
+}
+
+#match-game img {
+	width:100%;
+	border-radius:5px;
+}
+

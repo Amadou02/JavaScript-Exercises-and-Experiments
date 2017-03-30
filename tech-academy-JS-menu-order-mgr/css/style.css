@@ -1,0 +1,230 @@
+body {
+	margin:0;
+	padding:0 5%;
+	background:#5e9f3f;
+	font-size: 18px;
+	font-family: 'Architects Daughter', cursive;
+}
+
+h1 {
+	margin:0;
+	color:#fff;
+	font-size: 38px;
+}
+
+h2 {
+	font-size: 26px;
+	margin-bottom: 5px;
+}
+
+ul {
+	margin: 10px 0 5px;
+	padding-left: 20px;
+}
+
+ul li {
+	list-style-type:none;
+}
+
+p {
+	margin:0 0 5px;
+	font-size: 20px;
+}
+
+button {
+	margin-top: 5px;
+    font-size: 28px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background: #fff;
+	font-family: 'Architects Daughter', cursive;
+}
+
+.main {
+	border-right:2px black solid;
+	border-left:2px black solid;
+}
+
+.header {
+	background:#319400;
+	padding: 20px 3%;
+}
+
+.content {
+	padding-bottom: 20px;
+	background:#DE2110;
+}
+
+.info {
+	overflow: hidden;
+	background:#fff;
+	padding: 0 7% 10px;
+}
+
+.content .order{
+	width:54%;
+	overflow: hidden;
+}
+
+.order div {
+	float:left;
+	width:46%;
+	padding-left:20px;
+}
+
+.order h2 span:first-child {
+	margin-right:50px;
+}
+
+.content .order p {
+	margin:10px 0;
+}
+
+.order-started {
+	clear:both;
+	line-height: 1.2;
+    padding-top: 6px;
+	padding: 6px 0 0 20px;
+}
+
+.order-started a{
+	color:#DE2110;
+	font-size:22px;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+.container {
+	float:left;
+	width:46%;
+}
+
+.container p {
+	margin: 10px 0 0 24px;
+}
+
+.options {
+	overflow:hidden;
+}
+
+.options, .meat-options, .veg-options {
+	padding: 0 7% 20px;
+}
+
+.options, .store-info {
+	color: #fff;
+}
+
+.meat-options, .price {
+	color:#DE2110;
+}
+	
+
+.veg-options {
+	background:#319400;
+	overflow:hidden;
+}
+
+.meat-options{
+	background:#fff;
+}
+
+.cheese-options , .sauce-options{
+	padding-left:48px;
+}
+
+.meat-options{
+	clear:both;
+	overflow: hidden;
+}
+
+.meat-options input, .veg-options input{
+	margin-left:30px;
+	margin-top: 10px;
+}
+
+.meat-options input:first-child, .veg-options input:first-child{
+	margin-left:0;
+}
+
+input[type="radio" i] {
+	margin-right:10px;
+}
+
+.store-info {
+	text-align:center;
+	background:#DE2110;
+}
+
+.store-info h4{
+	margin-bottom: 10px;
+}
+
+.modal {
+	top: 17%;
+    right: 12%;
+	position:absolute;
+	background:#fff;
+	padding: 20px;
+    border-radius: 4px;
+	border:2px solid black;
+}
+
+.modal h2{
+	text-align:center;
+	border-bottom:2px solid black;
+	padding-bottom:5px;
+	clear:both;
+}
+
+.modal h3 {
+	margin:12px 0 4px;
+}
+
+.modal p span {
+	padding-left:20px;
+	float:right;
+}
+
+.modal .meat-row{
+	padding-bottom:5px;
+}
+
+.modal .subtotal{
+	border-top:2px solid black;
+	padding-top:5px;
+	padding-bottom: 30px;
+	font-weight:bold;
+	font-size:22px;
+}
+
+.modal .total {
+	padding-top:5px;
+	font-weight:bold;
+	font-size:22px;
+}
+
+#close {
+	float: right;
+    font-size: 20px;
+	margin-bottom: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
