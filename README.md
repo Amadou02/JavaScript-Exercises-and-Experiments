@@ -1,7 +1,7 @@
 # JavaScript-Exercises-and-Experiments
 Personal projects focused on JavaScript jQuery as well as learning work from courses and tutorials. 
 
-
+-- Everything needs comments comments comments. --
 1. AJAX-flickr-search
 
 TreeHouse.com learning tutorial. Calls to the Flickr API, returning images for user search input.
