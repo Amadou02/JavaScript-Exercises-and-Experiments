@@ -1,5 +1,5 @@
 # JavaScript-Exercises-and-Experiments
-Personal projects focused on JavaScript jQuery as well as learning work from courses and tutorials. 
+**Personal projects focused on JavaScript jQuery as well as learning work from courses and tutorials.**
 
 -- Everything needs comments comments comments. --
 1. AJAX-flickr-search
@@ -39,7 +39,7 @@ JavaScript jQuery functional pizza menu and order manager webpage. Menu selectio
 Collection of JavaScript snippets from online learning. To start a library of useful reference code, syntax, and format.
 
 
-Current Work in JavaScript and Front End Development
+**Current Work in JavaScript and Front End Development**
 
   Re Writing and extension of #8. tech-academy-JS-menu-order-mgr in order to move global variables into functions to be passed. Further styling and incorporation into a responsive Bootstrap page.	  
 
