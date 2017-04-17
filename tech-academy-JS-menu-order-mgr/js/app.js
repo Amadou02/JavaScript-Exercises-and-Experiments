@@ -1,42 +1,8 @@
-var $size;
-var basePrice = 0;
-var personal = 6;
-var medium = 10;
-var large = 14;
-var xlarge = 16;
-
-var $cheese = 'Regular';
-var cheesePrice = 0;
-var $crust = 'Plain';
-var crustPrice = 0;
-var $sauce = 'Marinara';
-
-var meatCount = 0;
-var $meatItem;
-var meatPrice = 0;
-var meat = [];
-var vegCount = 0;
-var $vegItem;
-var vegPrice = 0;
-var veg = [];
-
-var itemTotal = 0;
-var orderTotal = 0;
-
-var pizzaOrder;
-
-// Resets basePrice when selecting different sizes
-function baseCheck(){
-	if (basePrice > 0) {
-		basePrice = 0;
-	}
-}
-
-// Updates current total to screen for item being ordered
-function updateItemTotal(){
-		itemTotal = basePrice + cheesePrice + crustPrice + vegPrice + meatPrice;
-		$('.item-total').text(itemTotal);
-}
+// Title: JavaScript / jQuery Pizza Menu and Order Manager
+// Author: Daniel Wallace
+// Course: JavaScript : Tech Academy Portland
+// Date: 12/2016
+// Purpose: Pizza Menu and Order Manager - Tracks user order input for multiple items and displays itemized receipt.
 
 // Pizza constructor
 function pizza(size, cheese, crust, sauce, veg, meat) {
@@ -46,6 +12,19 @@ function pizza(size, cheese, crust, sauce, veg, meat) {
     this.sauce = sauce;
 	this.veg = veg;
 	this.meat = meat;
+}
+
+// Resets basePrice when selecting different sizes
+function baseCheck(){
+	if (basePrice > 0) {
+		basePrice = 0;
+	}
+}
+
+// Updates display of current item total cost
+function updateItemTotal(){
+		itemTotal = basePrice + cheesePrice + crustPrice + vegPrice + meatPrice;
+		$('.item-total').text(itemTotal);
 }
 
 // Resets input checks and option prices
@@ -76,7 +55,7 @@ function resetOrder() {
 	$("input[value=Marinara]").prop("checked", true);
 }
 
-// Shows receipt modal window
+// Creates receipt
 function checkOut(){
 	$('#checkout').hide();
 	$('#place-order').hide();
@@ -94,9 +73,15 @@ $('.order-started').hide();
 $('#checkout').hide();
 $('.modal').hide();
 
-// Size options selection 
+// Select options for size
+var $size;
+var basePrice = 0; 
 $('.size input').click(function() {
-	$size = $(this).attr('value')
+	var personal = 6;
+	var medium = 10;
+	var large = 14;
+	var xlarge = 16;
+	var $size = $(this).attr('value')
 	$('.choose-size').hide();
 	if ($size == 'Personal'){
 		baseCheck();
@@ -119,7 +104,9 @@ $('.size input').click(function() {
 	}
 });
 
-// Cheese options selection
+// Select options for cheese
+var $cheese = 'Regular';
+var cheesePrice = 0;
 $('.cheese input').click(function() {
 	$cheese = $(this).attr('value')
 	if (cheesePrice > 0) {
@@ -130,9 +117,12 @@ $('.cheese input').click(function() {
 		cheesePrice += 3;
 		updateItemTotal();
 	}
+	return $cheese;
 });
 
-// Crust options selection
+// Select options for crust
+var $crust = 'Plain';
+var crustPrice = 0;
 $('.crust input').click(function() {
 	$crust = $(this).attr('value')
 	if (crustPrice > 0) {
@@ -143,14 +133,21 @@ $('.crust input').click(function() {
 		crustPrice += 3;
 		updateItemTotal();
 	}
+	return $crust;
 });
 
-// Sauce options selection
+// Select options for sauce
+var $sauce = 'Marinara';
 $('.sauce input').click(function() {
 	$sauce = $(this).attr('value')
+	return $sauce;
 });
 
-// Veggies options selection
+// Select options for veggie toppings
+var vegCount = 0;
+var $vegItem;
+var vegPrice = 0;
+var veg = [];
 $('.veggies input').click(function() {
 	$vegItem = $(this).attr('value');
 	if ($(this).prop('checked')){
@@ -170,9 +167,14 @@ $('.veggies input').click(function() {
 		vegPrice = 0;
 		updateItemTotal();
 	}
+	return veg;
 });
 
-// Meats options selection
+// Select options for meat toppings
+var meatCount = 0;
+var $meatItem;
+var meatPrice = 0;
+var meat = [];
 $('.meats input').click(function() {
 	$meatItem = $(this).attr('value');
 	if ($(this).prop('checked')){
@@ -194,7 +196,10 @@ $('.meats input').click(function() {
 	}
 });
 
-// Creates pizza object and appends to receipt modal window...Places item total into order total...resets for additional orders
+// Creates new pizza object and appends to receipt...Places item total into order total...resets for additional orders
+var itemTotal = 0;
+var orderTotal = 0;
+var pizzaOrder;
 $('#place-order').click(function() {
 	if (basePrice == 0){
 		$('.choose-size').show();
@@ -218,7 +223,7 @@ $('#place-order').click(function() {
 	}
 });
 
-// Shows receipt for total order
+// Displays itemized receipt for total order after checkout
 $('#checkout').click(function() {
 	if (itemTotal > 0 && $(this).hasClass('disabled')){ 
 		$('.order-started').hide();
@@ -235,15 +240,15 @@ $('#checkout').click(function() {
 	}
 });
 
-// Order started message continue option
+// When order is clicked, prompts to order more or checkout
 $('.continue').click(function() {
-		$('#checkout').removeAttr('disabled');
-		$('#checkout').removeClass('disabled');
-		$('.order-started').hide();
-		$('.order-more').show();
+	$('#checkout').removeAttr('disabled');
+	$('#checkout').removeClass('disabled');
+	$('.order-started').hide();
+	$('.order-more').show();
 });
 
-// Order started message checkout option
+// If order has been started but not submitted and checkout is clicked, message displays 
 $('.checkout').click(function() {
 	resetOrder();
 	checkOut();
