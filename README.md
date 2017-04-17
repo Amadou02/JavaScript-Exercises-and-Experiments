@@ -30,7 +30,7 @@ TreeHouse.com learning tutorial. Front-End verification of proper password/login
 
 TreeHouse.com learning tutorial. Basic lightbox.
 
-8. tech-academy-JS-menu-order-mgr	
+**8. tech-academy-JS-menu-order-mgr**
 
 JavaScript jQuery functional pizza menu and order manager webpage. Menu selection updates price information to user. Allows for input of multiple orders. Returns itemized receipt to user upon final order.
 
@@ -40,7 +40,5 @@ Collection of JavaScript snippets from online learning. To start a library of us
 
 
 **Current Work in JavaScript and Front End Development**
-
-  Re Writing and extension of #8. tech-academy-JS-menu-order-mgr in order to move global variables into functions to be passed. Further styling and incorporation into a responsive Bootstrap page.	  
 
   Investigating and experimenting with open APIs such as OpenWeather, Wordnick, and NY Times.
