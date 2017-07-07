@@ -1,0 +1,244 @@
+ <!DOCTYPE HTML>
+ <html ng-app="characterApp" lang="en-US">
+	 <head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<title>AngularJS Character Creator</title>
+	</head>
+	<body>
+		<section id="main">
+			<div class="container-fluid" ng-controller="characterCtrl" >
+				<div class="row">
+					<div class="createCharacter col-lg-9 col-md-9">
+						<form>
+							<div class="row name">
+								<div class="col-lg-3 col-md-3 form-group ">
+									<h4>First Name</h4>
+									<input type="text" class="form-control" ng-model="character.firstName" limit-to="4"><br>
+								</div>
+								<div class="col-lg-3 col-md-3 form-group">
+									<h4>Last Name</h4>
+									<input type="text" class="form-control" ng-model="character.lastName"><br>
+								</div>
+								<div class="col-lg-3 col-md-3 form-check">
+									<h4>Choose Your <span ng-style="typeColor">Type</span></h4>
+									<input type="radio" class="form-check-input" value="Warrior" ng-model="character.type" ng-change="typeDefault()" ng-click="typeColor={color:'red'}" > Warrior<br>
+									<input type="radio" class="form-check-input" value="Wizard" ng-model="character.type" ng-change="typeDefault()" ng-click="typeColor={color:'cyan'}" > Wizard<br>
+									<input type="radio" class="form-check-input" value="Thief" ng-model="character.type" ng-change="typeDefault()" ng-click="typeColor={color:'purple'}" > Thief<br>
+									<input type="radio" class="form-check-input" value="Monk" ng-model="character.type" ng-change="typeDefault()" ng-click="typeColor={color:'brown'}" > Monk<br>
+									<input type="radio" class="form-check-input" value="Archer" ng-model="character.type" ng-change="typeDefault()" ng-click="typeColor={color:'green'}" > Archer<br>
+									<input type="radio" class="form-check-input" value="Cleric" ng-model="character.type" ng-change="typeDefault()" ng-click="typeColor={color:'orange'}" > Cleric<br>
+								</div>
+								<div class="col-lg-3 col-md-3 form-check">
+									<h4>Race and Gender</h4>
+									<input type="radio" class="form-check-input" name="humanRadio" value="Human" ng-model="character.race"> Human<br>
+									<input type="radio" class="form-check-input" name="elfRadio" value="Elf" ng-model="character.race"> Elf<br>
+									<input type="radio" class="form-check-input" name="dwarfRadio" value="Dwarf" ng-model="character.race"> Dwarf<br><br>
+									<input type="radio" name="maleRadio" value="Male" ng-model="character.gender"> Male<br>
+									<input type="radio" name="femaleRadio" value="Female" ng-model="character.gender"> Female<br>
+								</div>
+							</div> 
+							<div class="row roll-row">
+								<div class="col-lg-6 col-md-6">
+									<h4>Roll a 6 sided and 20 sided die. Multiply to determine your starting experience.</h4>
+									<div class="row">
+									
+									
+										<div class="col-lg-6">
+											<button type="button" class="btn btn-primary rollBtn" ng-click="rollExp()" onclick="this.disabled=true">Roll for Experience</button>
+										</div>
+
+										<div class="col-lg-6">
+											<p></p>
+											<p ng-show="expRoll.expRollMsg">You rolled a {{expRoll.value1}} and a {{expRoll.value2}}.</p> 
+											<p ng-show="expRoll.minExpMsg">You will start with the minimum 40 Experience.</p>
+											
+											<p ng-show="expRoll.statMsg">Your stat totals are greater than your total experience.</p>
+										</div>
+									</div>
+									
+									<h4>Set Character Stats&nbsp;&nbsp;&nbsp;&nbsp;Stats Total: {{tempStats.statsTotal}}&nbsp;&nbsp;Experience: {{tempStats.tempExp}}</h4>
+									<label>Set Health Level {{tempStats.health}}</label><br>
+									<input type="range" name="health" ng-model="tempStats.health" ng-change="statsCheck()" ng-disabled="expRoll.slidersEnabled"> <br>
+									<label>Set Attack Level {{tempStats.attack}}</label><br>
+									<input type="range" name="attack" ng-model="tempStats.attack" ng-change="statsCheck()" ng-disabled="expRoll.slidersEnabled"><br>
+									<label>Set Defense Level {{tempStats.defense}}</label><br>
+									<input type="range" name="defense" ng-model="tempStats.defense" ng-change="statsCheck()" ng-disabled="expRoll.slidersEnabled"><br>
+									<label>Set Speed Level {{tempStats.speed}}</label><br>
+									<input type="range" name="speed" ng-model="tempStats.speed" ng-change="statsCheck()" ng-disabled="expRoll.slidersEnabled"><br>
+									<label>Set Magic Level {{tempStats.magic}}</label><br>
+									<input type="range" name="magic" ng-model="tempStats.magic" ng-change="statsCheck()" ng-disabled="expRoll.slidersEnabled"><br>
+									<button type="button" class="btn btn-primary" ng-disabled="expRoll.applyEnabled" ng-click="applyStats()" onclick="this.disabled=true">Apply Stats</button><br>
+								</div>
+
+								
+								
+								
+								
+								
+								
+								
+								<div class="col-lg-6 col-md-6">
+									<h4>Roll a 6 sided and 20 sided die. Multiply to determine your starting supply of gold.</h4>
+									<div class="row">
+										<div class="col-lg-6">
+											<button type="button" class="btn btn-primary rollBtn" onclick="this.disabled=true" ng-click="rollWealth()">Roll for Wealth</button>
+										</div>
+										<div class="col-lg-6">
+											<p ng-show="wealthRoll.wealthRollMsg">You rolled a {{wealthRoll.value1}} and a {{wealthRoll.value2}}.</p> 
+											<p ng-show="wealthRoll.minGoldMsg">You will start with the minimum 40 Gold.</p>
+											<p ng-show="wealthRoll.shopMsg">You are over your budget. Please remove an item or items.</p>
+										</div>
+									</div>
+									<h4>Purchase Item's From The Shop&nbsp;&nbsp;&nbsp;&nbsp;Cart Total: {{cartTotal}}&nbsp;&nbsp;Wealth: {{tempWealth}}</h4>
+									<div id="shopForm" class="form-check form-check-inline">
+										<span ng-repeat="product in shop" id="{{product[0]}}">
+											<input type="checkbox" class="form-check-input"  value="{{product[0]}}" ng-checked="selection.indexOf(product) > -1" ng-click="toggleSelection(product)" ng-disabled="wealthRoll.checksEnabled"/> {{product[0]}}  {{product[1]}}<br>
+										</span>
+									</div>
+									<ul>
+										<li ng-repeat="item in cart">{{item[0]}}</li>
+									</ul>
+									<button type="button" class="btn btn-primary" id="cartButton" ng-click="addInventory()" ng-disabled="wealthRoll.purchaseEnabled">Purchase Items</button><br>
+								</div>
+								
+								
+								
+								
+								
+								
+							</div>
+						</form>		
+					</div>
+					<div class="character col-lg-3 col-md-3">
+						<h2>New Character</h2>
+						<h3>Name   <span>{{character.firstName}} {{character.lastName}}</span></h3>
+						<h3>Type   <span>{{character.type}}</span></h3>
+						<h3>Race   <span>{{character.race}}</span></h3>
+						<h3>Gender <span>{{character.gender}}</span></h3>
+						<h3>Wealth <span>{{character.wealth}}</span></h3>
+						<h3>Experience <span>{{character.exp}}</span></h3>
+						<h3>Health <span>{{character.health}}</span></h3>
+						<h3>Attack <span>{{character.attack}}</span></h3>
+						<h3>Defense <span>{{character.defense}}</span></h3>
+						<h3>Speed <span>{{character.speed}}</span></h3>
+						<h3>Magic <span>{{character.magic}}</span></h3>
+						<h3>Character Inventory</h3>
+						<ul>
+							<li ng-repeat="item in character.inventory">{{item[0]}}</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="container-fluid" ng-controller="charactersListCtrl">
+			<button type="button" class="btn btn-primary" id="createButton" ng-click="addCharacter()" >Create Character</button><br>
+				<div ng-repeat="character in charactersList | filter:query">
+					<h2>{{character.firstName}} {{character.lastName}}</h2>
+					<h3>{{character.type}} {{character.race}} {{character.gender}}</h3>
+					<h4>Wealth: {{character.wealth}}</h4>
+					<h4>Experience: {{character.exp}}</h4>
+					<ul>
+						<li>Health: {{character.health}}</li>
+						<li>Attack: {{character.attack}}</li>
+						<li>Defense: {{character.defense}}</li>
+						<li>Speed: {{character.speed}}</li>
+						<li>Magic: {{character.magic}}</li>
+					</ul>
+					<button class="btn btn-primary" ng-click="addToTeam()">Add to Team</button>
+					<button class="btn btn-primary" ng-click="removeCharacter($event)" name="{{character.fullName}}">Remove Character</button>
+				</div>
+				<div>
+					<select ng-show="teamsAvailMsg.teamMsg">
+						<option ng-repeat="team in teamsAvailable">{{team.teamName}}</option>
+					</select>
+				</div>
+				<div class="table-responsive">
+					Search by Character Name, Type, or Race <input ng-model="query" type="text" />
+					<table class="table">
+						<tr>
+							<th><a href="" ng-click="sortField = 'firstName'">First</a></th>
+							<th><a href="" ng-click="sortField = 'lastName'">Last</a></th>
+							<th><a href="" ng-click="sortField = 'type'">Type</a></th>
+							<th><a href="" ng-click="sortField = 'race'">Race</a></th>
+							<th><a href="" ng-click="sortField = 'gender'">Gender</a></th>
+							<th><a href="" ng-click="sortField = 'wealth'">Wealth</a></th>
+							<th><a href="" ng-click="sortField = 'exp'">Experience</a></th>
+							<th><a href="" ng-click="sortField = 'health'">Health</a></th>
+							<th><a href="" ng-click="sortField = 'attack'">Attack</a></th>
+							<th><a href="" ng-click="sortField = 'defense'">Defense</a></th>
+							<th><a href="" ng-click="sortField = 'speed'">Speed</a></th>
+							<th><a href="" ng-click="sortField = 'magic'">Magic</a></th>
+						</tr>
+						<tr ng-repeat="character in charactersList | filter:query | orderBy:sortField">
+							<td>{{character.firstName}}</td>
+							<td>{{character.lastName}}</td>
+							<td>{{character.type}}</td>
+							<td>{{character.race}}</td>
+							<td>{{character.gender}}</td>
+							<td>{{character.wealth}}</td>
+							<td>{{character.exp}}</td>
+							<td>{{character.health}}</td>
+							<td>{{character.attack}}</td>
+							<td>{{character.defense}}</td>
+							<td>{{character.speed}}</td>
+							<td>{{character.magic}}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-md-3">
+					<h3>Team Member 1</h3>
+				</div>
+				<div class="col-lg-3 col-md-3">
+					<h3>Team Member 2</h3>
+				</div>
+				<div class="col-lg-3 col-md-3">
+					<h3>Team Member 3</h3>
+				</div>
+				<div class="col-lg-3 col-md-3">
+					<h3>Team Member 4</h3>
+				</div>
+			</div>
+			<div class="container-fluid" ng-controller="teamsCtrl">			
+				<div ng-repeat="team in teamsList  | filter:query">
+					<h2>{{team.teamName}}</h2>
+						<li>Member1: {{team.teamMembers[0].firstName}}  {{team.teamMembers[0].lastName}} {{team.teamMembers[0].type}}  {{team.teamMembers[0].race}} {{team.teamMembers[0].gender}}</li>
+						<li>Member2: {{team.teamMembers[1].firstName}}  {{team.teamMembers[1].lastName}} {{team.teamMembers[1].type}}  {{team.teamMembers[1].race}} {{team.teamMembers[1].gender}}</li>
+						<li>Member3: {{team.teamMembers[2].firstName}}  {{team.teamMembers[2].lastName}} {{team.teamMembers[2].type}}  {{team.teamMembers[2].race}} {{team.teamMembers[2].gender}}</li>
+						<li>Member4: {{team.teamMembers[3].firstName}}  {{team.teamMembers[3].lastName}} {{team.teamMembers[3].type}}  {{team.teamMembers[3].race}} {{team.teamMembers[3].gender}}</li>
+					<button class="btn btn-primary">Choose Team</button>
+					<button class="btn btn-primary">Remove Character</button>
+				</div>
+				<div class="table-responsive">
+					Search by Team Name<input ng-model="query" type="text" />
+					<table class="table">
+						<tr>
+							<th>Team Name</th>
+							<th>Team Member 1</th>
+							<th>Team Member 2</th>
+							<th>Team Member 3</th>
+							<th>Team Member 4</th>
+						</tr>
+						<tr ng-repeat="team in teamsList | filter:query">
+							<td>{{team.teamName}}</td>
+							<td>{{team.teamMembers[0].firstName}} {{team.teamMembers[0].lastName}}</td>
+							<td>{{team.teamMembers[1].firstName}} {{team.teamMembers[1].lastName}}</td>
+							<td>{{team.teamMembers[2].firstName}} {{team.teamMembers[2].lastName}}</td>
+							<td>{{team.teamMembers[3].firstName}} {{team.teamMembers[3].lastName}}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</section>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+	 </body>
+ </html>
+ 
+ 
+ 
+ 

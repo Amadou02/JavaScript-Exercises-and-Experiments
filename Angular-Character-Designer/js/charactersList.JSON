@@ -1,0 +1,15 @@
+[	
+	{"firstName": "First1", "lastname": "Last1", "type": "Warrior", "race": "Human", "gender": "Male", "wealth": 20, "experience": 10, "health": 20, "attack": 30, "defense": 20, "speed": 8, "magic": 7, "inventory": ['Sword', 'Armor', 'Ax']},
+	
+	{"firstName": "First2", "lastname": "Last2", "type": "Wizard", "race": "Elf", "gender": "Female", "wealth": 10, "experience": 20, "health": 25, "attack": 10, "defense": 15, "speed": 12, "magic": 20, "inventory": ['Wand', 'Dagger', 'Book']},
+	
+	{"firstName": "First3", "lastname": "Last3", "type": "Thief", "race": "Dwar", "gender": "Male", "wealth": 30, "experience": 5, "health": 15, "attack": 5, "defense": 5, "speed": 5, "magic": 12, "inventory": ['Cloak', 'Dagger', 'Boots']},
+	
+	{"firstName": "First4", "lastname": "Last4", "type": "Cleric", "race": "Human", "gender": "Female", "wealth": 5, "experience": 25, "health": 10, "attack": 20, "defense": 20, "speed": 15, "magic": 20, "inventory": ['Elixir', 'Cloak', 'Amulet']},
+	
+	{"firstName": "First5", "lastname": "Last5", "type": "Monk", "race": "Elf", "gender": "Male", "wealth": 12, "experience": 20, "health": 30, "attack": 15, "defense": 5, "speed": 10, "magic": 15, "inventory": ['Staff', 'Ax', 'Cloak']},
+	
+	{"firstName": "First6", "lastname": "Last6", "type": "Archer", "race": "Dwarf", "gender": "Female", "wealth": 15, "experience": 10, "health": 10, "attack": 12, "defense": 10, "speed": 7, "magic": 10, "inventory": ['Bow', 'Helmet', 'Mail']}
+];
+
+

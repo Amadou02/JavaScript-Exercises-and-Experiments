@@ -1,0 +1,107 @@
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+
+/*['#001514','#046B65','#0BA39B','#2DE5DC'];*/
+
+
+body {
+ 
+}
+
+.character h2, .character .h2 {
+	color:#03a9f4;
+	margin-top: 15px;
+}
+
+h3 {
+	color:#0BA39B;
+}
+
+h3 span {
+	color:#03a9f4;
+	float:right;
+}
+
+.character h3, .character .h3 {
+	font-size: 20px;
+	margin-top: 5px;
+	margin-bottom:5px;
+}
+
+h4 {
+	color:blue;
+}
+
+.roll-row h4 {
+	font-size: 16px;
+	margin-bottom:0;
+}
+
+.character ul li {
+	list-style-type:none;
+}
+
+p {
+	color:green;
+}
+
+
+
+
+label {
+	color:purple;
+}
+
+input {
+	color:#03a9f4;
+}
+
+.name .form-control {
+    margin-top: 18px;
+	height:40px;
+}
+
+
+
+.rollBtn {
+	margin-top: 33px;
+	margin-bottom: 48px;
+}
+
+
+
+.createCharacter {
+	background:#ccdcfb;
+	padding:15px 20px 0;
+}
+
+.name{
+	padding-bottom:15px;
+}
+
+.roll-row{
+	background:#bdd6e9;
+	padding-top:10px;
+	margin-right: -20px;
+    margin-left: -20px;
+}
+
+.character {
+	background:#2DE5DC;
+	border:10px solid #03a9f4;
+	padding:0 20px 5px 20px;
+}
+
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) { ... }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) { ... }
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min) { ... }
+
+
+
