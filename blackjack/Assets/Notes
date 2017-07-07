@@ -1,0 +1,128 @@
+deck of 52 cards
+	Written Rules:
+		Dealer must draw on 16 and stand on all 17's
+		Blackjack pays 3 to 2
+
+shuffled randlomly
+
+There is a dealer and a player
+
+	Betting:
+	
+	Blackjack pays 3 to 2
+	
+	Min Bet 1 Max Bet 25
+
+	The player has a starting purse of 25
+	
+	white chips = $1
+	red chips = $5
+	green chips = $25
+	
+	
+	
+	
+player decides how much to bet on the hand
+
+
+
+the player and the dealer receive two cards each.
+
+You compute your score by adding the values of your individual cards.
+
+The Players are face up.
+
+Dealers has one face down and one face up.
+
+
+
+			(player must declare if he wants to take advantage of the side rules. You can only use the side rules once, after the deal.)....for later
+			
+			
+			
+ 
+ Player Stands...
+ 
+	Turn goes to the dealer
+ 
+ ...Or Hits
+ 
+	Deal another cards
+	
+		Bust? (over 21)
+		
+		Hit 
+		
+		Or Stand
+		
+		
+Dealers Turn
+	turns over hidden card
+	
+	
+	
+	
+If a natural 21 (blackjack) .... Player loses....1...
+
+	unless player also has a blackjack.... push....4.... 
+
+Dealer must draw on 16 and stand on all 17's
+
+	Whether or not the dealer must hit on a soft 17 ? (a hand of 17 containing an ace being counted as 11) ?
+	
+
+dealer goes bust... player wins...2.... 
+
+player with higher point totals than the dealer...player wins...2... 
+
+player with lower totals than the dealer.....player loses....1....
+
+same total as the dealer... is a push...4...
+
+Players with a blackjack win a bet plus a bonus amount, which is normally equal to half their original wager. A blackjack hand beats any other hand, also those with a total value of 21 but with more cards.
+
+As described above, if the dealer has a blackjack, players with blackjack make a push, while all other players lose.
+
+
+
+
+ 
+ 
+ 
+ 
+
+The aim of the game is to accumulate a higher point total than the dealer, but without going over 21. 
+ 
+
+The cards 2 through 10 have their face value, J, Q, and K are worth 10 points each, and the Ace is worth either 1 or 11 points (player's choice).
+
+
+
+
+ 
+
+
+
+Each hand will result in one of the following events for the player:
+
+	1 Lose 
+			the player's bet is taken by the dealer.
+
+	2 Win 
+			the player wins as much as he bet. If you bet $10, you win $10 from the dealer (plus you keep your original bet.)
+			
+	3 Blackjack (natural) 
+	
+			the player wins 1.5 times the bet. With a bet of $10, you keep your $10 and win a further $15 from the dealer.
+			
+	4 Push 
+			A draw. The player keeps his bet, neither winning nor losing <money class=""></money>
+			
+
+
+
+
+
+
+
+	

@@ -4,6 +4,8 @@
 // Date: 12/2016
 // Purpose: Pizza Menu and Order Manager - Tracks user order input for multiple items and displays itemized receipt. Utilizes Bootstrap to demonstrate responsive HTML/CSS.
 
+//@ media break styling
+//Modal window weirdness
 
 $('#checkout2').hide();	
 

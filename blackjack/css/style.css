@@ -1,0 +1,183 @@
+body {
+	margin:0;
+}
+
+#blacjack {
+	background:#333;
+	margin:0;
+}
+
+#blackjack h2{
+	font-size: 2em;
+	margin: 10px 0 0;
+}
+
+#blackjack .game-space h2{
+	font-size:2.2em;
+}
+
+#blackjack .result, #blackjack .results {
+	position:absolute;
+	right:60px;
+	color:#fff;
+	text-align:right;
+}
+
+#blackjack .result {
+	top:300px;
+}
+
+#blackjack .results {
+	top:350px;
+}
+
+#blackjack h3{
+    font-size: 1.6em;
+    line-height: 1.4;
+	color:#fff;
+}
+
+#blackjack button {
+	font-size: 1.8em;
+    padding: 5px 15px;
+    border-radius: 4px;
+	margin-top: 25px;
+	margin-right:20px;
+}
+
+#blackjack ul li {
+	list-style-type:none;
+}
+
+#blackjack .main {
+	margin:0 auto;
+	background:#999;
+	overflow: hidden;
+}
+
+#blackjack .game-header {
+	overflow:hidden;
+	padding-bottom:15px;
+	background:#fff;
+	padding-left: 5%;
+}
+
+#blackjack .game-header h1 {
+	font-size:3em;
+	padding-top:22px;
+}
+
+#blackjack .game-header h1, #blackjack .rules {
+	width:45%;
+	float:left;
+	margin:0;
+}
+
+#blackjack .rules {
+	font-size: 1.5em;
+    margin-top: 10px;
+}
+
+#blackjack .game-space {
+	text-align:center;
+	padding: 12px 0 12px;
+    height: 436px;
+	background:green;
+}
+
+#blackjack .placeBetMessage{
+	width: 50%;
+	margin: 80px auto 0;
+	border: 3px solid #000;
+    border-radius: 4px;
+    padding: 12px;
+}
+
+
+#blackjack .game-space li {
+	float:left;
+    border-radius: 6px;
+    margin-right: 30px;
+    width: 128px;
+    padding: 74px 0;
+	background:#fff;
+	color:red;
+	font-size:1.3em;
+}
+
+#blackjack .game-space .hole {
+	background:red;
+}
+
+#blackjack .game-space p {
+    font-size: 2em;
+    margin-top: -6px;
+    color: #fff;
+}
+
+#blackjack .dealerCards {
+	margin-bottom:36px;
+}
+
+#blackjack .dealerCards, #blackjack .playerCards { 
+	padding-left:15%;
+}
+
+#blackjack .player-space {
+	padding-left:5%;
+	overflow: hidden;
+}
+
+#blackjack .betChips a {
+	text-decoration:none;
+	overflow:hidden;
+}
+
+#blackjack .betChips span {
+	margin-right:5px;
+	font-size:0.8em;
+}
+
+#blackjack .bet, #blackjack .purse, #blackjack .controls {
+	width:33%;
+	float:left;
+}
+
+#blackjack .bet .betChips, #blackjack .purse .chips {
+	overflow:hidden;
+	margin: 8px 0 12px;
+}
+
+#blackjack .purse h2, #blackjack .bet h2 {
+	margin:4px 0;
+}
+
+#blackjack .purse ul li, #blackjack .bet ul li {
+	float:left;
+	margin-right:15px;
+	border-radius:100%;
+	width: 40px;
+    height: 34px;
+    text-align: center;
+    padding-top: 6px;
+	font-size: 1.6em;
+}
+
+#blackjack .purse ul .chip1 li, #blackjack .bet ul .betChip1 li {
+	background:#fff;
+}
+
+#blackjack .purse ul .chip5 li, #blackjack .bet ul .betChip5 li {
+	background:red;
+}
+
+#blackjack .purse ul .chip25 li, #blackjack .bet ul .betChip25 li {
+	background:green;
+}
+
+
+
+
+
+
+
