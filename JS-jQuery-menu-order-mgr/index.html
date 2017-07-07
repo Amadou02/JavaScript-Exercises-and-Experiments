@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>The Pizza Place Order Form</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet"  href="./css/style.css">
+		<link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
+    </head>
+    <body>
+		<div class="container-fluid main">
+			<div class="header row">
+				<h1>The Pizza Place Order Form</h1>
+			</div>
+			<div class="content">
+			
+				<div class="modal fade receiptModal" id="receipt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<button type="button" class="close finish" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">Order Details</h4>
+					  </div>
+					  <div class="modal-body">
+						<h2>Thanks For Your Order!</h2>
+					  </div>
+					  <div class="modal-footer">
+						<button class="finish" type="button" data-dismiss="modal">Finish</button>
+					  </div>
+					</div>
+				  </div>
+				</div>
+				
+				<div class="modal fade checkModal" id="orderCheck" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					  <div class="modal-body">
+					  <p>Would you like to add more items to your order?</p>
+						<button id="addMore" type="button" data-dismiss="modal">Add More</button>
+						<p>Are your ready to proceed to checkout?</p>
+						<button id="checkout" type="button" onclick="checkOut()" data-dismiss="modal" data-toggle="modal" data-target="#receipt" >Checkout</button>
+					  </div>
+					</div>
+				  </div>
+				</div>
+
+				<div class="modal fade clearModal" id="started" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					  <div class="modal-body">
+						<p>You've started a new pizza. Would you like to <span>Continue Ordering</span> or clear the current order and <span>Checkout</span>?</p>
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" data-dismiss="modal">Continue</button>
+						<button id="checkout3" type="button" onclick="checkOut()" data-dismiss="modal" data-toggle="modal" data-target="#receipt" >Checkout</button>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			
+				<div class="info row">
+					<div class="info-container col-xs-6">
+						<h3>Item Total <br><strong style="color:#5e9f3f;">$ <span class="item-total">0 </span></strong></h3>
+					</div>
+					<div class="info-container col-xs-6">
+						<h3>Order Total <br><strong style="color:#5e9f3f;">$ <span class="order-total">0 </span></strong></h3>
+					</div>
+					<div class="price col-xs-12">
+						<ul>
+							<li>Personal <span>$6.00</span></li>
+							<li>Medium <span>$10.00</span></li>
+							<li>Large <span>$14.00</span></li>
+							<li>Extra Large <span>$16.00</span></li>
+						</ul>
+					</div>
+					<div class="info-container col-xs-12">
+						<button id="addItem" disabled data-toggle="modal" data-target="#orderCheck">Add Item</button>
+						<button id="checkout2" type="button" onclick="checkOut()" data-dismiss="modal" data-toggle="modal" data-target="#receipt" >Checkout</button>
+					</div>
+				</div>
+				<div class="row options">
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="sizeTab">
+						  <h2 class="panel-title">
+							<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSize" aria-expanded="true" aria-controls="collapseSize">
+							  Sizes
+							</a>
+						  </h2>
+						</div>
+						<div id="collapseSize" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="sizeTab">
+						    <div class="panel-body size-options">
+								<form class="size">
+								  <input type="radio" name="size" value="Personal"> Personal<br>
+								  <input type="radio" name="size" value="Medium"> Medium<br>
+								  <input type="radio" name="size" value="Large"> Large<br> 
+								  <input type="radio" name="size" value="Extra-Large"> Extra Large
+								</form> 
+						    </div>
+						</div>
+					  </div>					  
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="cheeseTab">
+						  <h2 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseCheese" aria-expanded="false" aria-controls="collapseCheese">
+							  Cheese
+							</a>
+						  </h2>
+						</div>
+						<div id="collapseCheese" class="panel-collapse collapse" role="tabpanel" aria-labelledby="cheeseTab">
+						    <div class="panel-body cheese-options">
+							<form class="cheese">
+							  <input type="radio" name="cheese" value="Regular" checked> Regular<br>
+							  <input type="radio" name="cheese" value="None"> No Cheese<br>
+							  <input type="radio" name="cheese" value="Extra-Cheese"> Extra Cheese
+							</form>
+							<p>Add $3.00 for Extra Cheese (all sizes).</p>
+						    </div>
+						</div>
+					  </div>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="crustTab">
+						  <h2 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseCrust" aria-expanded="false" aria-controls="collapseCrust">
+							  Crust
+							</a>
+						  </h2>
+						</div>
+						<div id="collapseCrust" class="panel-collapse collapse" role="tabpanel" aria-labelledby="crustTab">
+						    <div class="panel-body crust-options">
+								<form class="crust">
+									<input type="radio" name="crust" value="Plain" checked> Plain<br>
+									<input type="radio" name="crust" value="Garlic-Butter"> Garlic Butter<br>
+									<input type="radio" name="crust" value="Stuffed"> Cheese Stuffed<br> 
+									<input type="radio" name="crust" value="Spicy"> Spicy<br> 
+									<input type="radio" name="crust" value="House-Special"> House Special
+								</form> 
+								<p>Add $3.00 for Cheese Stuffed Crust.</p>
+						    </div>
+						</div>
+					  </div>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="sauceTab">
+						    <h2 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSauce" aria-expanded="false" aria-controls="collapseSauce">
+							  Sauce
+								</a>
+						    </h2>
+						</div>
+						<div id="collapseSauce" class="panel-collapse collapse" role="tabpanel" aria-labelledby="sauceTab">
+							<div class="panel-body sauce-options">
+								<form class="sauce">
+									<input type="radio" name="sauce" value="Marinara" checked> Marinara<br>
+									<input type="radio" name="sauce" value="White"> White Sauce<br>
+								    <input type="radio" name="sauce" value="Barbeque"> Barbeque<br> 
+								    <input type="radio" name="sauce" value="None"> No Sauce
+								</form>
+							</div>
+						</div>
+					  </div>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="meatTab">
+						    <h2 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseMeat" aria-expanded="false" aria-controls="collapseMeat">
+							  Meat
+								</a>
+						    </h2>
+						</div>	
+						<div id="collapseMeat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="meatTab">
+							<div class="panel-body meat-options">
+								<form class="meats">
+									<div class="row">
+										<div class="col-xs-12">
+											<input type="checkbox" name="meat" value="Pepperoni" > Pepperoni
+										</div>
+										<div class="col-xs-12">
+											<input type="checkbox" name="meat" value="Sausage"> Sausage
+										</div>
+										<div class="col-xs-12">
+											<input type="checkbox" name="meat" value="Canadian-Bacon"> Canadian Bacon
+										</div>
+										<div class="col-xs-12">
+											<input type="checkbox" name="meat" value="Ground-Beef"> Ground Beef
+										</div>
+										<div class="col-xs-12">
+											<input type="checkbox" name="meat" value="Anchovi"> Anchovi
+										</div>
+										<div class="col-xs-12">
+											<input type="checkbox" name="meat" value="Chicken"> Chicken
+										</div>	
+									</div>							
+								</form> 
+								<p>Additional Meat items + $ 1.00 each (first is complementary).</p>		
+							</div>
+						</div>
+					  </div>
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="vegTab">
+								<h2 class="panel-title">
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseVeg" aria-expanded="false" aria-controls="collapseVeg">
+							  Veggies
+									</a>
+								</h2>
+							</div>
+							<div id="collapseVeg" class="panel-collapse collapse" role="tabpanel" aria-labelledby="vegTab">
+								<div class="panel-body veg-options">
+									<form class="veggies">
+										<div class="row">
+											<div class="col-xs-12">
+												<input type="checkbox" name="veggie" value="Tomato" > Tomatoes
+											</div>
+											<div class="col-xs-12">
+												<input type="checkbox" name="veggie" value="Onion"> Onions
+											</div>
+											<div class="col-xs-12">
+												<input type="checkbox" name="veggie" value="Olive"> Olives
+											</div>
+											<div class="col-xs-12">
+												<input type="checkbox" name="veggie" value="Green-Pepper"> Green Peppers
+											</div>
+											<div class="col-xs-12">
+												<input type="checkbox" name="veggie" value="Mushroom"> Mushrooms
+											</div>
+											<div class="col-xs-12">
+												<input type="checkbox" name="veggie" value="Pineapple"> Pineapple
+											</div>
+											<div class="col-xs-12 colLeft">
+												<input type="checkbox" name="veggie" value="Spinach"> Spinach 
+											</div>
+											<div class="col-xs-12 colRight">
+												<input type="checkbox" name="veggie" value="Jalapeno"> Jalapeno
+											</div>
+										</div>
+									</form>							
+									<p>Additional Veggie items + $ 1.00 each (first is complementary).</p>			
+								</div>
+							</div>
+						</div>
+				    </div>					
+				</div>
+				<div class="store-info">
+					<h4>Brand Name and Info</h4>
+					<p>Store Info</p>
+					<p>Address Address Address</p>
+					<p>Note About Delivery</p>
+				</div>
+			</div>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="./js/app.js" type="text/javascript"></script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

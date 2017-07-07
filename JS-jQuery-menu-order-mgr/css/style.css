@@ -1,0 +1,278 @@
+/* General */
+
+body {
+	margin:0;
+	padding:0 5%;
+	background:#5e9f3f;
+	font-size: 18px;
+	font-family: 'Architects Daughter', cursive;
+}
+
+h1 {
+	margin:0;
+	color:#fff;
+	font-size: 38px;
+	text-align: center;
+}
+
+h2 {
+	font-size: 26px;
+	margin-bottom: 5px;
+}
+
+ul {
+	margin: 0 0 5px;
+	padding-left: 20px;
+}
+
+ul li {
+	list-style-type:none;
+	font-size: 20px;
+}
+
+p {
+	margin:0 0 5px;
+	font-size: 20px;
+}
+
+a:focus, a:hover {
+	text-decoration:none;
+}
+
+/* Buttons */
+
+button {
+	margin: 10px auto;
+    font-size: 22px;
+    padding: 6px 36px;
+    border-radius: 4px;
+    background: #5e9f3f;
+	color: #FFF;
+	font-family: 'Architects Daughter', cursive;
+	display:block;
+}
+
+#checkout2, #checkout3 {
+	padding: 6px 30px;
+	margin-top:15px;
+}
+
+#close {
+	float: right;
+    font-size: 20px;
+	margin-bottom: 12px;
+}
+
+/* Content */
+
+.main {
+	border-right:2px black solid;
+	border-left:2px black solid;
+}
+
+.header {
+	background:#319400;
+	padding: 20px 3%;
+}
+
+.content {
+	padding-bottom: 20px;
+	background:#DE2110;
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+.content h3 {
+	font-size:20px;
+}
+
+.content .info {
+	margin-left:0;
+	margin-right:0;
+	background:#fff;
+	padding: 10px 5% 10px;
+}
+
+.info h2 {
+	margin-top:0;
+}
+
+.info h3 {
+	margin-top: 8px;
+    text-align: center;
+    line-height: 1.3;
+}
+
+.info .info-container {
+	padding-left:0;
+	padding-right:0;
+}
+
+.content .order{
+	width:54%;
+	overflow: hidden;
+}
+
+.content .order p {
+	margin:10px 0;
+}
+
+.order div {
+	float:left;
+	width:46%;
+	padding-left:20px;
+}
+
+.order h2 span:first-child {
+	margin-right:50px;
+}
+
+.options {
+	color: #DE2110;
+	padding: 15px 9% 15px;
+}
+
+
+.options p {
+	font-size: 17px;
+    margin-top: 10px;
+    line-height: 1.2;
+}
+
+.meat-options{
+	background:#fff;
+	clear:both;
+	overflow: hidden;
+}
+
+.meat-options, .price {
+	color:#DE2110;
+}
+	
+
+.meat-options input, .veg-options input{
+	margin-left:30px;
+	margin-top: 10px;
+}
+
+.meat-options input:first-child, .veg-options input:first-child{
+	margin-left:0;
+}
+
+input[type="radio" i] {
+	margin-right:10px;
+}
+
+.store-info {
+	text-align:center;
+	background:#DE2110;
+	color: #FFF;
+}
+
+.store-info h4{
+	margin-bottom: 10px;
+}
+
+/* Modal Windows */
+
+.panel-title {
+	text-align:center;
+	font-size: 24px;
+	color: #319400;
+}
+
+.modal-title {
+	font-size:26px;
+	text-align:center;
+}
+
+.modal-body h2 {
+	font-size: 22px;
+    color: #5e9f3f;
+    margin-top: 0px;
+    text-align: center;
+}
+
+.modal-header {
+    padding: 10px 15px 5px;
+}
+
+#receipt {
+	padding-right:0 !important;
+}
+
+.receiptModal p {
+	margin: 0 0;
+    font-size: 18px;
+	line-height: 1.4;
+}
+
+.modal-body p span {
+	color:#DE2110;
+}
+
+.modal-body .total span {
+	color:#319400;
+}
+
+.receiptModal .modal-footer button {
+    margin: 5px auto;
+}
+
+.checkModal p, .clearModal p{
+	text-align:center;
+}
+
+.modal-body .veg-row{
+	padding-bottom:10px;
+}
+
+.modal-body .subtotal{
+	border-top:1px solid #e5e5e5;
+	padding:5px 0;
+	font-weight:bold;
+	font-size:22px;
+}
+
+.modal-body .total {
+	padding-top:5px;
+	font-weight:bold;
+	font-size:22px;
+}
+
+.price ul {
+	padding-left:0;
+}
+
+.price span {
+	float:right;
+}
+
+.modal-body .col-xs-3 p{
+	float:right;
+}
+
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) { ... }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) { ... }
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min) { ... }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
