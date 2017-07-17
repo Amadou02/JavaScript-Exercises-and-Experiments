@@ -1,62 +1,113 @@
+
  <!DOCTYPE HTML>
  <html lang="en-US">
  <head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" title="no title" charset="utf-8">
  	<meta charset="UTF-8">
- 	<title></title>
+ 	<title>BlackJack</title>
  </head>
  <body id="blackjack">
-	<div class="main">
-		<div class="game-header">
-			<h1>BLACKJACK</h1>
-			<ul class="rules">
-				<li>Dealer must draw on 16 and stand on all 17's</li>
-				<li>Win pays 2:1. Natural pays 3:2. Breakage rounds down.</li>
-				<li>Min. Bet 1 / Max. Bet 25</li>
-			</ul>
+	<div class="main container-fluid">	
+		<div class="game-header row">
+			<div class="col-xs-12">
+				<h1>BLACKJACK</h1>
+			</div>
+			<div class="col-xs-12">
+				<ul class="rules">
+					<li>Dealer must draw on 16 and stand on all 17's</li>
+					<li>Win pays 2:1. Natural pays 3:2. Breakage rounds down.</li>
+					<li>Min. Bet 1 / Max. Bet 50</li>
+				</ul>
+			</div>
 		</div>
-		<div class="game-space">
+		<div class="game-space row">
 			<div class="placeBetMessage">
-			<h2>Place Your Bet!</h2>
-			<h3>Click on your chips below to add them to your bet. Click on chips already added to the bet to remove. Click DEAL when you're ready. </br>Good Luck!</h3>
+				<h2>Place Your Bet!</h2>
+				<h3>Click on your chips below to add them to your bet. Click on chips already added to the bet to remove. Click DEAL when you're ready. </br>Good Luck!</h3>
 			</div>
-			<div class="dealerCardSpace">
-				<ul class="dealerCards" style="overflow:hidden">
-				</ul>
+			<div class="overPurseLimit">
+				<p>Sorry you don't have that in your purse.</p>
 			</div>
-			<div class="playerCardSpace">
-				<ul class="playerCards" style="overflow:hidden">
-				</ul>
+			<div class="overBetLimit">
+				<p>Sorry, the maximum bet at this table is $50.</p>
 			</div>
-			<p class="playerTotal"></p>
+			
+			
+			<div class="modal fade" id="gameOverModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+				<div class="modal-content">
+				  <div class="modal-header">
+					<h4 class="modal-title">Game Over!</h4>
+				  </div>
+				  <div class="modal-body">
+					<p>Sorry, your purse is empty. Come back later.</p>
+				  </div>
+				  <div class="modal-footer">
+					<button id="playAgain">Play Again?</button>
+				  </div>
+				</div>
+			  </div>
+			</div>
+			
+			
+			<div class="tableSpace">
+				<div class="row">
+					<div class="col-xs-6">
+						<h3 class="dealerTotal">Dealer <span></span></h3>
+					</div>
+					<div class="col-xs-6">
+						<h3 class="playerTotal">Player <span></span></h3>
+					</div>
+				</div>					
+				<div class="row dealerCards"></div>
+				<div class="row playerCards"></div>
+			</div>
 		</div>
-		<div class="player-space">
-			<div class="purse">
-				<h2>Player's Purse: <span></span></h2>
-				<ul class="chips">
-					<a href="#" class="chip1 enabled"><li>1</li></a>
-					<a href="#" class="chip5 enabled"><li>5</li></a>
-					<a href="#" class="chip25 enabled"><li >25</li></a>
-				</ul>
+		<div class="controls row">
+			<div class="col-xs-4">
+				<button id="deal" disabled >Deal</button>
 			</div>
-			<div class="bet">
-				<h2>Bet Total: <span></span></h2>
-				<ul class="betChips">
-					<a href="#" class="betChip1 enabled"><li></li></a>
-					<a href="#" class="betChip5 enabled"><li></li></a>
-					<a href="#" class="betChip25 enabled"><li></li></a>
-				</ul>
-			</div>
-			<div class="controls">
-				<button id="deal">Deal</button>
+			<div class="col-xs-4">
 				<button id="hit">Hit</button>
-				<button onclick="stand();" id="stand">Stand</button>
-				<button id="playAgain">Play Again?</button>
 			</div>
-		</div>			
-	</div>
- 
+			<div class="col-xs-4">
+				<button onclick="stand();" id="stand">Stand</button>
+			</div>
+		</div>	
+		<div class="playerSpace row">
+			<div class="purse col-xs-6">
+				<h4>Purse &nbsp <span></span></h4>
+				<div class="row">
+					<div class="col-xs-4 chipCol">
+						<a href="#" class="chip1 enabled" >1</a>
+					</div>
+					<div class="col-xs-4 chipCol">
+						<a href="#" class="chip5 enabled">5</a>
+					</div>
+					<div class="col-xs-4 chipCol">
+						<a href="#" class="chip25 enabled">25</a>
+					</div>
+				</div>
+			</div>
+			<div class="bet col-xs-6">
+				<h4>Bet &nbsp <span></span></h4>
+				<div class="row">
+					<div class="col-xs-4 chipCol">
+						<a href="#" class="betChip1 enabled"></a>
+					</div>
+					<div class="col-xs-4 chipCol">
+						<a href="#" class="betChip5 enabled"></a>
+					</div>
+					<div class="col-xs-4 chipCol">
+						<a href="#" class="betChip25 enabled"></a>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>	
  	<script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
  </body>
  </html>
