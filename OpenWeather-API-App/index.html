@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Weather App</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+	<div class="container-fluid">
+		<header>
+			<div class="row">
+				<div class="col-xs-12">
+					<h1>Weather App</h1>
+				</div>
+			</div>	
+			<div class="row search">
+				<div class="col-xs-12">
+					<label for="byName">City Name</label>
+					<input id="byName" type="text">
+				</div>
+				<div class="col-xs-12">
+					<label for="byZip">Zip Code</label>
+					<input id="byZip" type="text">
+				</div>
+				<div class="col-xs-12">
+					<label for="byGeo">Geo Coordinates</label>
+					<input id="byGeo" type="text">
+				</div>	
+				<div class="col-xs-12">
+					<button type="button" id="weather">Click for the Weather</button>
+				</div>
+			</div>
+		</header>
+		<section class="main">
+			<div class="row">
+				<canvas id="mainCanvas">
+				
+				</canvas>
+			</div>
+			<ul class="current">
+			</ul>
+		</section>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src= "js/app.js" type="text/javascript"></script>
+</body>
+</html>

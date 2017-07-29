@@ -1,0 +1,280 @@
++90 to -90 long +180 to -180
+
+cityId:5368361          			...geo...animate population to city skyline
+cityName:"Los Angeles"				...display...
+co:"US"								...wiki flag etc...
+lat:34.05							...geo  ...animation	+90 to -90
+lon:-118.24							...geo  ...animation  -180 and +180
+main:"Clear"						...display ...animation
+desc:"clear sky"					...display ...animation
+temp:71.33							...display ...animation
+windDir:323.501						...animation
+windSpeed:1.03						...display ...animation
+clouds:1							...low 0 ...high 100
+rise:1500814702						...display ...animation
+set:1500865211						...display ...animation
+rain:undefined						
+snow:undefined
+						
+
+
+main: Clear
+desc: clear sky
+Clouds
+broken clouds
+main: Rain
+desc: heavy intensity rain
+main: Drizzle
+desc: light intensity drizzle
+main: Drizzle
+desc: drizzle
+main: Mist
+desc: mist
+main: Haze
+desc: haze
+
+
+lon: 72.85
+lat: 19.01
+main: Haze
+desc: haze
+temp: 84.2
+windSpeed: 11.41
+windDir: 250
+clouds: 75
+rain: undefined
+snow: undefined
+co: IN
+rise: 1500770548
+set: 1500817653
+cityId: 1275339
+cityName: Mumbai
+
+lon: 4.89
+lat: 52.37
+main: Drizzle
+desc: drizzle
+temp: 58.37
+windSpeed: 9.17
+windDir: 190
+clouds: 20
+rain: undefined
+snow: undefined
+co: NL
+rise: 1500781661
+set: 1500839116
+cityId: 2759794
+cityName: Amsterdam
+
+lon: -74.01
+lat: 40.71
+main: Mist
+desc: mist
+temp: 72.3
+windSpeed: 4.7
+windDir: undefined
+clouds: 90
+rain: undefined
+snow: undefined
+co: US
+rise: 1500803092
+set: 1500855583
+cityId: 5128581
+cityName: New York
+
+lon: -149.9
+lat: 61.22
+main: Clear
+desc: clear sky
+temp: 70.09
+windSpeed: 9.17
+windDir: 230
+clouds: 1
+rain: undefined
+snow: undefined
+co: US
+rise: 1500815469
+set: 1500879557
+cityId: 5879400
+cityName: Anchorage
+
+lon: 12.57
+lat: 55.68
+main: Rain
+desc: heavy intensity rain
+description
+:
+"light intensity drizzle"
+
+main
+:
+"Drizzle"
+
+temp: 60.42
+windSpeed: 13.87
+windDir: 90
+clouds: 75
+rain: undefined
+snow: undefined
+co: DK
+rise: 1500778792
+set: 1500838286
+cityId: 2618425
+cityName: Copenhagen
+
+lon: 37.62
+lat: 55.75
+main: Clear
+desc: clear sky
+temp: 59.04
+windSpeed: 6.71
+windDir: 320
+clouds: 0
+rain: undefined
+snow: undefined
+co: RU
+rise: 1500772749
+set: 1500832304
+cityId: 524901
+cityName: Moscow
+
+
+
+
+
+
+
+
+
+
+Current Weather
+
+{"coord":
+{"lon":145.77,"lat":-16.92},
+"weather":[{"id":803,"main":"Clouds","description":"broken clouds","icon":"04n"}],
+"base":"cmc stations",
+"main":{"temp":293.25,"pressure":1019,"humidity":83,"temp_min":289.82,"temp_max":295.37},
+"wind":{"speed":5.1,"deg":150},
+"clouds":{"all":75},
+"rain":{"3h":3},
+"dt":1435658272,
+"sys":{"type":1,"id":8166,"message":0.0166,"country":"AU","sunrise":1435610796,"sunset":1435650870},
+"id":2172797
+"name":"Cairns",
+"cod":200
+
+Parameters:
+
+coord
+	coord.lon City geo location, longitude
+	coord.lat City geo location, latitude
+weather (more info Weather condition codes)
+	weather.id Weather condition id
+	weather.main Group of weather parameters (Rain, Snow, Extreme etc.)
+	weather.description Weather condition within the group
+	weather.icon Weather icon id
+base Internal parameter
+main
+	main.temp Temperature. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
+	main.pressure Atmospheric pressure (on the sea level, if there is no sea_level or grnd_level data), hPa
+	main.humidity Humidity, %
+	main.temp_min Minimum temperature at the moment. This is deviation from current temp that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
+	main.temp_max Maximum temperature at the moment. This is deviation from current temp that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
+	main.sea_level Atmospheric pressure on the sea level, hPa
+	main.grnd_level Atmospheric pressure on the ground level, hPa
+wind
+	wind.speed Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.
+	wind.deg Wind direction, degrees (meteorological)
+clouds
+	clouds.all Cloudiness, %
+rain
+	rain.3h Rain volume for the last 3 hours
+snow
+	snow.3h Snow volume for the last 3 hours
+dt Time of data calculation, unix, UTC
+sys
+sys.type Internal parameter
+	sys.id Internal parameter
+	sys.message Internal parameter
+	sys.country Country code (GB, JP etc.)
+	sys.sunrise Sunrise time, unix, UTC
+	sys.sunset Sunset time, unix, UTC
+id City ID
+name City name
+cod Internal parameter
+
+
+
+
+5 day forecast
+
+{"city":{"id":1851632,"name":"Shuzenji",
+"coord":{"lon":138.933334,"lat":34.966671},
+"country":"JP",
+"cod":"200",
+"message":0.0045,
+"cnt":38,
+"list":[{
+        "dt":1406106000,
+        "main":{
+            "temp":298.77,
+            "temp_min":298.77,
+            "temp_max":298.774,
+            "pressure":1005.93,
+            "sea_level":1018.18,
+            "grnd_level":1005.93,
+            "humidity":87
+            "temp_kf":0.26},
+        "weather":[{"id":804,"main":"Clouds","description":"overcast clouds","icon":"04d"}],
+        "clouds":{"all":88},
+        "wind":{"speed":5.71,"deg":229.501},
+        "sys":{"pod":"d"},
+        "dt_txt":"2014-07-23 09:00:00"}
+        ]}
+
+Parameters:
+
+code Internal parameter
+message Internal parameter
+city
+	city.id City ID
+	city.name City name
+	city.coord
+	city.coord.lat City geo location, latitude
+	city.coord.lon City geo location, longitude
+	city.country Country code (GB, JP etc.)
+cnt Number of lines returned by this API call
+list
+list.dt Time of data forecasted, unix, UTC
+list.main
+	list.main.temp Temperature. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
+	list.main.temp_min Minimum temperature at the moment of calculation. This is deviation from 'temp' that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
+	list.main.temp_max Maximum temperature at the moment of calculation. This is deviation from 'temp' that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
+	list.main.pressure Atmospheric pressure on the sea level by default, hPa
+	list.main.sea_level Atmospheric pressure on the sea level, hPa
+	list.main.grnd_level Atmospheric pressure on the ground level, hPa
+	list.main.humidity Humidity, %
+	list.main.temp_kf Internal parameter
+list.weather (more info Weather condition codes)
+	list.weather.id Weather condition id
+	list.weather.main Group of weather parameters (Rain, Snow, Extreme etc.)
+	list.weather.description Weather condition within the group
+	list.weather.icon Weather icon id
+list.clouds
+	list.clouds.all Cloudiness, %
+list.wind
+	list.wind.speed Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.
+	list.wind.deg Wind direction, degrees (meteorological)
+list.rain
+	list.rain.3h Rain volume for last 3 hours, mm
+list.snow
+	list.snow.3h Snow volume for last 3 hours
+list.dt_txt Data/time of calculation, UTC
+
+
+
+
+
+
+
+

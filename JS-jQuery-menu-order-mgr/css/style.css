@@ -51,8 +51,12 @@ button {
 	display:block;
 }
 
+button:hover {
+	opacity:0.7;
+}
+
 #checkout2, #checkout3 {
-	padding: 6px 30px;
+	padding: 6px 27px;
 	margin-top:15px;
 }
 
@@ -236,6 +240,16 @@ input[type="radio" i], input[type=checkbox] {
 	right: 0;
 }
 
+.modal-dialog {
+    width: auto;
+    margin: 15px;
+    position: absolute;
+    margin-left: 4%;
+    margin-right: 4%;
+    left: 0;
+    right: 0;
+}
+
 .modal-title {
 	font-size:26px;
 	text-align:center;
@@ -299,6 +313,12 @@ input[type="radio" i], input[type=checkbox] {
 	float:right;
 }
 
+.modal-open {
+    overflow: scroll;
+}
+
+/* Media Queries */
+
 @media screen and (min-width: 768px) {
 	
 	.price {
@@ -306,11 +326,15 @@ input[type="radio" i], input[type=checkbox] {
 	}
 
     .cheese-options p {
-	margin-top:61px;
+		margin-top:61px;
 	}
 
 	.meat-options p {
 		margin-top: 70px;
+	}
+	
+	.modal {
+		width: 50%;
 	}
 }
 
@@ -347,5 +371,12 @@ input[type="radio" i], input[type=checkbox] {
 	}
 }
 
+/*
+@media screen and (min-width: 1200px)
 
+	.info .addButton {
+		padding-top: 0px;
+}
+
+*/
 
