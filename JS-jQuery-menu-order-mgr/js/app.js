@@ -1,11 +1,49 @@
 // Title: JavaScript / jQuery Pizza Menu and Order Manager
 // Author: Daniel Wallace
 // Course: JavaScript : Tech Academy Portland
-// Date: 12/2016
+// Dates: 12/2016	07/2017 
 // Purpose: Pizza Menu and Order Manager - Tracks user order input for multiple items and displays itemized receipt. Utilizes Bootstrap to demonstrate responsive HTML/CSS.
 
-//@ media break styling
-//Modal window weirdness
+//Add button msg
+//Modal glitch
+// style checkout button added
+
+//Should be able to do load and resize all in one?
+$(window).on('load', function desktopViewUpdate() {
+    var viewportWidth = $(window).width();
+    if (viewportWidth >= 768) {
+		$('#accordion').hide();
+		$('#grid').show();
+		$('.options').removeClass('row');
+    }
+});
+
+$(window).on('resize', function desktopViewUpdate() {
+    var viewportWidth = $(window).width();
+    if (viewportWidth >= 768) {
+		$('#accordion').hide();
+		$('#grid').show();
+		$('.options').removeClass('row');
+    }
+});
+
+$(window).on('load', function mobileViewUpdate() {
+    var viewportWidth2 = $(window).width();
+    if (viewportWidth2 < 768) {
+		$('#grid').hide();		
+		$('#accordion').show();
+		$('.options').addClass('row');
+    }
+});
+
+$(window).on('resize', function mobileViewUpdate() {
+    var viewportWidth2 = $(window).width();
+    if (viewportWidth2 < 768) {
+		$('#grid').hide();		
+		$('#accordion').show();
+		$('.options').addClass('row');
+    }
+});
 
 $('#checkout2').hide();	
 
@@ -221,7 +259,6 @@ function checkOut(){
 	$('.receiptModal .total').remove();
 	$('.receiptModal .modal-body').append('<p class="total">Total :<span>  $ ' + orderTotal + '.00</span></p>');
 }
-
 
 
 

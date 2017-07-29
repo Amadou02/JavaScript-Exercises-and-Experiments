@@ -1,8 +1,8 @@
 /* General */
-
 body {
 	margin:0;
-	padding:0 5%;
+	padding-right:5% !important;
+	padding-left:5%;
 	background:#5e9f3f;
 	font-size: 18px;
 	font-family: 'Architects Daughter', cursive;
@@ -17,7 +17,7 @@ h1 {
 
 h2 {
 	font-size: 26px;
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 }
 
 ul {
@@ -40,11 +40,10 @@ a:focus, a:hover {
 }
 
 /* Buttons */
-
 button {
 	margin: 10px auto;
     font-size: 22px;
-    padding: 6px 36px;
+    padding: 6px 32px;
     border-radius: 4px;
     background: #5e9f3f;
 	color: #FFF;
@@ -64,7 +63,6 @@ button {
 }
 
 /* Content */
-
 .main {
 	border-right:2px black solid;
 	border-left:2px black solid;
@@ -108,6 +106,14 @@ button {
 	padding-right:0;
 }
 
+.price ul {
+	padding-left:0;
+}
+
+.price span {
+	float:right;
+}
+
 .content .order{
 	width:54%;
 	overflow: hidden;
@@ -129,9 +135,46 @@ button {
 
 .options {
 	color: #DE2110;
-	padding: 15px 9% 15px;
+	padding: 15px 9% 25px;
+	
 }
 
+.itemTitle, .options h2 {
+	text-align:center;
+	font-size: 24px;
+	color: #319400;
+}
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.options .col-lg-3, .options .col-lg-6 {
+	padding-left:10px;
+	padding-right:10px;
+}
+
+.col-inner {
+	background-color: #fff;
+	border-radius:4px;
+	height:93%;
+}
+
+.options .col-lg-3 h2, .options .col-lg-6 h2 {
+	background-color: #f5f5f5;
+	border-bottom:1px solid #ddd;
+	border-top-right-radius:4px;
+	border-top-left-radius:4px;
+	padding: 10px 15px;
+}
+
+.options .col-lg-3 form, .options .col-lg-6 form  {
+	padding:0 5% 3%;
+}
 
 .options p {
 	font-size: 17px;
@@ -139,16 +182,21 @@ button {
     line-height: 1.2;
 }
 
-.meat-options{
-	background:#fff;
-	clear:both;
-	overflow: hidden;
+.size-options form, .cheese-options form, .sauce-options form, .crust-options form {
+	padding-left:30px;
+}
+
+.meats > div, .veggies > div {
+	padding-left:30px;
 }
 
 .meat-options, .price {
 	color:#DE2110;
 }
 	
+input[type="radio" i], input[type=checkbox] {
+	margin-right:10px;
+}
 
 .meat-options input, .veg-options input{
 	margin-left:30px;
@@ -159,14 +207,19 @@ button {
 	margin-left:0;
 }
 
-input[type="radio" i] {
-	margin-right:10px;
+.panel-title {
+	text-align:center;
+	font-size: 24px;
+	color: #319400;
 }
 
+/* Footer */
 .store-info {
 	text-align:center;
 	background:#DE2110;
 	color: #FFF;
+	border-top: 1px solid black;
+	padding-top: 15px;
 }
 
 .store-info h4{
@@ -175,10 +228,12 @@ input[type="radio" i] {
 
 /* Modal Windows */
 
-.panel-title {
-	text-align:center;
-	font-size: 24px;
-	color: #319400;
+.modal {
+	position:absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
 }
 
 .modal-title {
@@ -240,39 +295,57 @@ input[type="radio" i] {
 	font-size:22px;
 }
 
-.price ul {
-	padding-left:0;
-}
-
-.price span {
-	float:right;
-}
-
 .modal-body .col-xs-3 p{
 	float:right;
 }
 
+@media screen and (min-width: 768px) {
+	
+	.price {
+		padding-right:0;
+	}
 
-/* Small devices (tablets, 768px and up) */
-@media (min-width: @screen-sm-min) { ... }
+    .cheese-options p {
+	margin-top:61px;
+	}
 
-/* Medium devices (desktops, 992px and up) */
-@media (min-width: @screen-md-min) { ... }
+	.meat-options p {
+		margin-top: 70px;
+	}
+}
 
-/* Large devices (large desktops, 1200px and up) */
-@media (min-width: @screen-lg-min) { ... }
+@media screen and (min-width: 992px) {
+	
+	.info .addButton {
+		padding-right: 15px;
+		padding-top: 10px;
+	}
+	
+	.info .info-container {
+		padding-top: 10px;
+	}
+	
+	.options .size-options form, .options .cheese-options form, .options .sauce-options form, .options .crust-options form {
+		padding: 0 5% 3% 20px;
+	}
 
+	.meats > div, .veggies > div {
+		padding-left:15px;
+	}
+}
 
-
-
-
-
-
-
-
-
-
-
+@media screen and (min-width: 1200px) {
+	
+	.info .addButton{
+		padding-right:50px;
+		padding-top:18px;
+	}
+	
+	.info .info-container {
+		padding-left:48px;
+		padding-top: 20px;
+	}
+}
 
 
 
