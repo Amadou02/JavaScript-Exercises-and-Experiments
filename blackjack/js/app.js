@@ -1,33 +1,15 @@
-
-//Dynamic column sizing for xtra cards.
-
-//write a tester
-
-    //Ace check in deal for double aces case
-
-	//natural > natural  ...Looks good  except style "Dealer is Bust" "You win Payout is"
-	       // > push
-	
-	//bust      ...Looks good ... "Bust Sorry You Lose"    
-	//blackjack ...dont need to reveal dealer or tally..or result(wait..actually looks good with the pause?..always?)  ..showed a push with 21 dealer
-		// 10 10 A  stopped the seond stage  and dealerTally
-		
-		//"Black Jack"   Then.."You Win Payout is!"
-	                                                 
-	//stand > dealer bust > win  ...Looks good  except style "Dealer is Bust" "You win Payout is"
-	     // > win                ...Looks good
-		 // > lose               ...Looks good
-		 // > push               ...Looks good
-		
-		// 1 Ace works
+//Hide away global variables 
 
 
-		
-// Pass variables..objects		 
-		 
-// Timing	
-	        
-
+//Dynamically updates card sizes ... need max size ... wrap into function for elsewhere
+var cardWidth;
+var cardLength;
+//How to call all as function
+$(window).on('resize', function updateCards() {	
+	cardWidth = $('.card').width();
+	cardLength = cardWidth * 1.2;
+	$('.card').height(cardLength);
+});
 			
 //Hidden Elements
 $('.betChip1').hide();
@@ -45,8 +27,6 @@ var deck = {
 };
 
 var cards = [];
-
-
 
 //Defines a card
 function card(value, name, suit){
@@ -196,27 +176,32 @@ var playerTotal = 0;
 var player  = 0;
 var dealerTotal = 0;
 var dealer = 0;
-
-//Tests for a Natural
-//cards = [{name:'A',suit:'Diamond',value:11},{name:'10',suit:'Diamond',value:10},{name:'2',suit:'Clubs',value:2},{name:'2',suit:'Diamond',value:2}];
+var blackjack = false;
+var naturalCheck = false;
 
 //Tests for a BlackJack
+//Pass for calc
 //cards = [{name:'10',suit:'Diamond',value:10},{name:'10',suit:'Diamond',value:10},{name:'2',suit:'Clubs',value:2},{name:'2',suit:'Diamond',value:2},{name:'A',suit:'Diamond',value:11}];
 
+//Tests for a Natural
+//Pass for calc
+//cards = [{name:'A',suit:'Diamond',value:11},{name:'10',suit:'Diamond',value:10},{name:'A',suit:'Diamond',value:11},{name:'5',suit:'Diamond',value:5}];
+
 //Tests for a Dealer Bust win
-//cards = [{name:'2',suit:'Diamond',value:2},{name:'2',suit:'Diamond',value:2},{name:'10',suit:'Clubs',value:10},{name:'10',suit:'Diamond',value:10},{name:'10',suit:'Diamond',value:10}];
+//Pass for calc
+//cards = [{name:'2',suit:'Diamond',value:2},{name:'2',suit:'Diamond',value:2},{name:'10',suit:'Clubs',value:10},{name:'5',suit:'Diamond',value:5},{name:'10',suit:'Diamond',value:10}];
 
 //Tests for a win
-//cards = [{name:'10',suit:'Diamond',value:10},{name:'10',suit:'Diamond',value:10},{name:'2',suit:'Clubs',value:2},{name:'2',suit:'Diamond',value:2}];
+//cards = [{name:'10',suit:'Diamond',value:10},{name:'10',suit:'Diamond',value:10},{name:'5',suit:'Clubs',value:5},{name:'5',suit:'Diamond',value:5},{name:'7',suit:'Diamond',value:7}];
 
-//Tests for a lose
+//Tests for a lose  
 //cards = [{name:'2',suit:'Diamond',value:2},{name:'2',suit:'Diamond',value:2},{name:'10',suit:'Clubs',value:10},{name:'10',suit:'Diamond',value:10}];
 
 //Tests for a push
 //cards = [{name:'10',suit:'Diamond',value:10},{name:'10',suit:'Diamond',value:10},{name:'10',suit:'Clubs',value:10},{name:'10',suit:'Diamond',value:10}];
 
 //Tests for player w double aces on deal..then two Aces and a 10 on 3 hits
-//cards = [{name:'A',suit:'Diamond',value:11},{name:'A',suit:'Diamond',value:11},{name:'2',suit:'Clubs',value:2},{name:'2',suit:'Diamond',value:2},{name:'A',suit:'Diamond',value:11}, {name:'A',suit:'Diamond',value:11}, {name:'10',suit:'Diamond',value:10}];
+//cards =     [{name:'A',suit:'Diamond',value:11},{name:'A',suit:'Diamond',value:11},{name:'2',suit:'Clubs',value:2},{name:'2',suit:'Diamond',value:2},{name:'A',suit:'Diamond',value:11}, {name:'A',suit:'Diamond',value:11}, {name:'10',suit:'Diamond',value:10}, {name:'10',suit:'Diamond',value:10}];
 
 //Tests for dealer w double aces on deal..then two Aces and a 10 and a 10 to bust on 4 hits
 //cards = [{name:'2',suit:'Diamond',value:2},{name:'2',suit:'Diamond',value:2},{name:'A',suit:'Clubs',value:11},{name:'A',suit:'Diamond',value:11},{name:'A',suit:'Diamond',value:11}, {name:'A',suit:'Diamond',value:11}, {name:'10',suit:'Diamond',value:10}, {name:'10',suit:'Diamond',value:10}];
@@ -231,29 +216,42 @@ $('#deal').click(function(){
 	$('.playerCards').append('<div class="cardRow"></div>');
 	$('.playerCards .cardRow').append('<div class="col-xs-3"><p class="card">'+ cards[0].name + ' ' + '<br><span>' + cards[0].suit +'</span></p></div>');
 	$('.playerCards .cardRow').append('<div class="col-xs-3"><p class="card">'+ cards[1].name + ' ' + '<br><span>' + cards[1].suit +'</span></p></div>');
-	
 	// Appends dealer cards into their row
 	$('.dealerCards').append('<div div class="cardRow"></div>');
 	$('.dealerCards .cardRow').append('<div class="col-xs-3"><p class="card">'+ cards[2].name + ' ' + '<br><span>' + cards[2].suit +'</span></p></div>');
 	$('.dealerCards .cardRow').append('<div class="col-xs-3"><p class="card hole">'+ cards[3].name + ' ' + '<br><span>' + cards[3].suit +'</span></p></div>');
 	
+	cardWidth = $('.card').width();
+	cardLength = cardWidth * 1.2;
+	$('.card').height(cardLength);
+	
 	// Tallies player and dealer totals to temp value
 	playerTotal = cards[0].value + cards[1].value;
 	dealerTotal = cards[2].value + cards[3].value;
 	
-	player = playerTotal;
-	dealer = dealerTotal;
+	// Count how many aces player has...
+	var stack = ".playerCards";
+	playerAceCount = countAces(stack);
+	// Adjust player score for aces
+	player = aceCheck(playerTotal, playerAceCount);
+	
 	// Checks for player = 21
 	if (player === 21) {
 		$('.hole').removeClass('hole');
+		if(dealerTotal > 21){
+			dealerTotal = dealerTotal - 10;
+		}
+		$('.dealerTotal span').replaceWith('<span> ' + dealerTotal + '</span>');
 		
 		// If dealer has 21 also...push 
-		if (dealer === 21){
+		if (dealerTotal === 21){
+			naturalCheck = true;
 			push();
 		}
 		// Else player has natural 21
 		else {
-			natural();
+			$('.controls').append('<h2 class="results">Natural 21!</h2>');
+			window.setTimeout(natural, 3000);
 		}
 	// If no 21 dealt to player..show hit/ stand buttons	
 	} else {
@@ -271,6 +269,11 @@ $('#hit').click(function(){
 	var playerAceCount = 0;
 	// Adds card to page with name and suit 
 	$('.playerCards').append('<div class="col-xs-3"><p class="card">' + cards[hitIndex].name + ' ' + '<br><span>' + cards[hitIndex].suit + '</span></p></div>');
+	
+	cardWidth = $('.card').width();
+	cardLength = cardWidth * 1.2;
+	$('.card').height(cardLength);
+	
 	//adds the last hit card to player total and displays
 	playerTotal += cards[hitIndex].value;
 	hitIndex += 1;
@@ -286,10 +289,14 @@ $('#hit').click(function(){
 		$(this).hide();
 		$('#stand').hide();
 		//Display results 
-		$('.game-space').append('<h2 class="result">Bust!</h2>');
-		$('.dealerTotal span').replaceWith('<span> ' + dealer + '</span>');
+		$('.controls').append('<h2 class="result">Bust!</h2>');
 		$('.hole').removeClass('hole');
-		lose();
+		dealer = dealerTotal;
+		if(dealer > 21){
+			dealer = dealer - 10;
+		}
+		$('.dealerTotal span').replaceWith('<span> ' + dealer + '</span>');
+		window.setTimeout(lose, 3000);
 	}
 	
 	else if (player === 21) {
@@ -297,8 +304,9 @@ $('#hit').click(function(){
 		$(this).hide();
 		$('#stand').hide();
 		//Display results 
-		$('.game-space').append('<h2 class="result">BlackJack!</h2>');
-		window.setTimeout(stand, 3000);
+		$('.controls').append('<h2 class="result">BlackJack!</h2>');
+		blackjack = true;
+		window.setTimeout(win, 3000);
 	}
 });
 
@@ -342,6 +350,8 @@ function stand(){
 	$('.game-space h2').remove();
 	//"Flips" dealers hidden card
 	$('.hole').removeClass('hole');
+	
+	
 	// Count how many aces dealer has...
 	stack = ".dealerCards";
 	var dealerAceCount = countAces(stack);
@@ -350,16 +360,23 @@ function stand(){
 	        
 	while (dealer <= 16){
 		$('.dealerCards').append('<div class="col-xs-3"><p class="card">' + cards[hitIndex].name + ' ' + '<br><span>' + cards[hitIndex].suit +'</span></p></div>');
+		
+		// Count how many aces dealer has...
 		dealerTotal += cards[hitIndex].value;		
 		dealerAceCount = countAces(stack);
-		// Adjust player score for aces
+		// Adjust dealer score for aces
 		dealer = aceCheck(dealerTotal, dealerAceCount);		
 		$('.dealerTotal span').replaceWith('<span> ' + dealer + '</span>');
+		
+		cardWidth = $('.card').width();
+		cardLength = cardWidth * 1.2;
+		$('.card').height(cardLength);
+		
 		hitIndex += 1;
 				
 		if (dealer > 21){  
 			$('.controls').append('<h2 class="result">Dealer is bust!</h2>');
-			win();
+			window.setTimeout(win, 3000);
 		}
 	}
 	
@@ -376,6 +393,7 @@ function stand(){
 
 // Calls when player loses
 function lose(){
+	$('.controls h2').remove();
 	$('.dealerTotal span').replaceWith('<span> ' + dealer + '</span>');
 	if (purse <= 0) {
 		$('.controls').append('<h2 class="results">Sorry, you lose.</h2>');
@@ -383,36 +401,42 @@ function lose(){
 	}
 	else {
 		$('.controls').append('<h2 class="results">Sorry,  you lose.</h2>');
-		window.setTimeout(nextHand, 8000);
+		window.setTimeout(nextHand, 4000);
 	}
-}
+}           
 
 // Calls when player and dealer tie
 function push(){
-	$('.dealerTotal span').replaceWith('<span> ' + dealer + '</span>');
+	if(!naturalCheck){
+		$('.dealerTotal span').replaceWith('<span> ' + dealer + '</span>');
+	}
 	$('.controls').append('<h2 class="results">Push.</h2>');
 	purse += betTotal;
 	$('.purse h4 span').replaceWith('<span>' + purse + '</span>');
-	window.setTimeout(nextHand, 8000);
+	window.setTimeout(nextHand, 4000);
 }
  
  // Calls when player is dealt 21 straight away
 function natural(){
-	$('.controls').append('<h2 class="results">Natural 21 You Win!</h2>');
-	$('.controls').append('<h2 class="results">Payout is ' + Math.floor(betTotal + betTotal * 1.5) + '</h2>');
+	$('.controls h2').remove();
+	$('.controls').append('<h2 class="results">You win! Payout is ' + Math.floor(betTotal + betTotal * 1.5) + '</h2>');
 	purse += Math.floor(betTotal + betTotal * 1.5);
 	$('.purse h4 span').replaceWith('<span>' + purse + '</span>');
-	window.setTimeout(nextHand, 8000);
+	window.setTimeout(nextHand, 4000);
 }
 
 // Call when player wins
 function win(){
-	$('.dealerTotal span').replaceWith('<span> ' + dealer + '</span>');
+	if(!blackjack){
+		$('.dealerTotal span').replaceWith('<span> ' + dealer + '</span>');
+	}
+	$('.controls h2').remove();
 	$('.controls').append('<h2 class="results">You win! Payout is ' + betTotal * 2 + '</h2>');
 	purse += betTotal * 2;
 	$('.purse h4 span').replaceWith('<span>' + purse + '</span>');
-	window.setTimeout(nextHand, 8000);
+	window.setTimeout(nextHand, 4000);
 }
+
 
 function overPurseMsg(){
 	$('.overPurseLimit').hide();
@@ -424,6 +448,8 @@ function overBetMsg(){
 
 // Calls after complete hand
 function nextHand(){
+	blackjack = false;
+	naturalCheck = false;
 	// Removes cards from table
 	$('.playerCards div').remove();
 	$('.dealerCards div').remove();
