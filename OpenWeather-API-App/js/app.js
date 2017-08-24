@@ -10,9 +10,50 @@
 	
 	//Additional weather obj loop in 5 day
 	
+$('.search2').hide();
+	
+var $searchMethod	
+$('.searchType input').click(function(event){
+	$('#weather').attr('disabled', false);
+	$('#getWeather').attr('disabled', false);
+	$searchMethod = $(this).attr('value');
+	if($searchMethod == "geo"){
+		$('.search2').show();
+		$('.search1').hide();
+	}
+	else if($searchMethod == "zip"){
+		$('#weather').attr('placeholder', 'ex. 97214 or WC2N5DU,UK');
+		$('.search2').hide();
+		$('.search1').show();
+	}
+	else{
+		$('#weather').attr('placeholder', 'ex. Portland or London,UK');
+		$('.search2').hide();
+		$('.search1').show();
+	}
+	
+});
 
-$('#weather').click(function(event){
-	$.getJSON('http://api.openweathermap.org/data/2.5/weather?q=Mumbai&APPID=aef08817909835269e1ed3691975cbaa&units=imperial', function(response){
+// Format and Validate	
+$('#getWeather').click(function(event){
+	var getJsonString;
+	if($searchMethod == 'name'){
+		var city = $('#weather').val();
+		//q city name and country code divided by comma, use ISO 3166 country codes
+		getJsonString = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=aef08817909835269e1ed3691975cbaa&units=imperial';
+	}
+	else if($searchMethod == 'zip'){
+		var zip = $('#weather').val();
+		//{zip code},{country code}
+		getJsonString = 'http://api.openweathermap.org/data/2.5/weather?zip=' + zip + '&APPID=aef08817909835269e1ed3691975cbaa&units=imperial'	
+	}
+	else if($searchMethod == 'geo'){
+		var lat = $('#lat').val();
+		var lon = $('#lon').val();
+		getJsonString = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&APPID=aef08817909835269e1ed3691975cbaa&units=imperial'
+	}
+		
+	$.getJSON(getJsonString, function(response){
 		var JSON = response;
 		
 		console.log(response);
@@ -88,36 +129,106 @@ function displayDesc(weatherArray){
 function draw(weatherItem, weather){
 	var canvas = document.getElementById("mainCanvas");
 	var ctx = canvas.getContext("2d");
+	
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	
+	
 	var temp = weather.temp;
+	var bgColor;
 	if(weather.temp <= 32){
-		$('#mainCanvas').css( "background", "#D0FFF3" )
+		bgColor = "#D0FFF3";
+		$('#mainCanvas').css( "background", bgColor )
 	}
 	else if (weather.temp > 32 && weather.temp < 50){
-		$('#mainCanvas').css( "background", "#22FFED" )
+		bgColor = "#22FFED";
+		$('#mainCanvas').css( "background", bgColor )
 	}
 	else if (weather.temp >= 50 && weather.temp < 60){
-		$('#mainCanvas').css( "background", "#FBFF79" )
+		bgColor = "#FBFF79";
+		$('#mainCanvas').css( "background", bgColor )
 	}
 	else if (weather.temp >= 60 && weather.temp < 70){
-		$('#mainCanvas').css( "background", "#FFF700  " )
+		bgColor = "#FFF700";
+		$('#mainCanvas').css( "background", bgColor )
 	}
 	else if (weather.temp >= 70 && weather.temp < 80){
-		$('#mainCanvas').css( "background", "#FFC800" )
+		bgColor = "#FFC800";
+		$('#mainCanvas').css( "background", bgColor )
 	}
 	else if (weather.temp >= 80 && weather.temp < 90){
-		$('#mainCanvas').css( "background", "#FF8300" )
+		bgColor = "#FF8300";
+		$('#mainCanvas').css( "background", bgColor )
 	}
 	else if (weather.temp >= 90 && weather.temp < 100){
-		$('#mainCanvas').css( "background", "##FF0000" )
+		bgColor = "#FF0000"
+		$('#mainCanvas').css( "background", bgColor )
 	}
 	else{
-		$('#mainCanvas').css( "background", "#D60000" )
+		bgColor = "#D60000"
+		$('#mainCanvas').css( "background", bgColor )
 	}	
-	//ctx.fillStyle = "#666";
-	//ctx.beginPath();
-	//ctx.arc(95,50,temp,0,2*Math.PI);
-	//ctx.stroke();	
+	
+	
+	var pallete = chroma.scale([bgColor,'#2A4858'])
+    .mode('lch').colors(6);
+	
+	var d = new Date();
+	var n = d.getTime();
+	console.log(n);
+	
+	var groundPlane = canvas.height * 0.8;
+	var skyLine = canvas.height * 0.3;
+	
+	ctx.fillStyle = pallete[5];
+	
+	//ground line
+	ctx.lineWidth="1";
+	ctx.beginPath();
+	ctx.moveTo(0,groundPlane);
+	ctx.lineTo(canvas.width,groundPlane);
+	ctx.stroke();
+	
+	//cloud
+	ctx.moveTo(canvas.width/2 - 20, skyLine);
+	ctx.lineTo(canvas.width/2 + 20, skyLine);
+	ctx.stroke();
+	
+	ctx.beginPath();
+	ctx.arc(canvas.width/2,skyLine,20,0,-1*Math.PI);
+	ctx.stroke();
+	
+	//sun path
+	ctx.beginPath();
+	ctx.arc(canvas.width/2,groundPlane,110,0,2*Math.PI);
+	ctx.stroke();
+	
+	//sun
+	ctx.beginPath();
+	ctx.arc(41,groundPlane,temp/3,0,2*Math.PI);
+	ctx.stroke();
+	
+	//building
+	ctx.beginPath();
+	ctx.lineWidth="3";
+	ctx.strokeStyle = pallete[5];
+	ctx.rect(canvas.width/2 - 20, groundPlane - 80, 40, 80);
+	ctx.stroke();
+	
+	//display
+	ctx.font = "8px Arial";
+	ctx.fillStyle = pallete[1];
+	ctx.fillText(weather.cityName + ' ' + weather.co, 10, 14);
+	ctx.fillStyle = pallete[2];
+	ctx.fillText(weatherItem.main + ' ' + weatherItem.desc, 10, 26);
+	ctx.fillStyle = pallete[3];
+	ctx.fillText(weather.temp + ' degrees', 10, 38);
+	ctx.fillStyle = pallete[4];
+	ctx.fillText('Wind Speed ' + weather.windSpeed + ' Wind Dir ' + weather.windDir, 10, 50);
+	ctx.fillStyle = pallete[5];
+	ctx.fillText(weather.clouds + ' clouds', 10, 62);
+	
 }
+
 
 
 /*

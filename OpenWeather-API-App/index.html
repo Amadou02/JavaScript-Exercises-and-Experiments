@@ -15,20 +15,38 @@
 				</div>
 			</div>	
 			<div class="row search">
-				<div class="col-xs-12">
-					<label for="byName">City Name</label>
-					<input id="byName" type="text">
+				<div class="col-xs-12 searchType">
+					<h2>Select Your Search Type.</h2>
+					<div>
+						<label for="byName">City Name</label>
+						<input id="byName" value="name" name="searchRadio" type="radio">
+					</div>
+					<div>
+						<label for="byZip">Zip Code</label>
+						<input id="byZip" value="zip" name="searchRadio" type="radio">
+					</div>
+					<div>
+						<label for="byGeo">Coordinates</label>
+						<input id="byGeo" value="geo" name="searchRadio" type="radio">
+					</div>
+				</div>
+				<div class="col-xs-12 search1">
+					<label for="weather">Enter a Location</label>
+					<input id="weather" type="text" placeholder="Choose a Search Type" disabled>
+				</div>
+				<div class="col-xs-12 search2">
+					<label>Enter a Location</label>
+					<div>
+						<label for="weatherLat">Latitude</label>
+						<input id="weatherLat" type="text" placeholder="ex. 45.52 or 45.52N">
+					</div>
+					<div>
+						<label for="weatherLon">Longitude</label>
+						<input id="weatherLon" type="text" placeholder="ex. -122.68 or 122.68W">
+					</div>
 				</div>
 				<div class="col-xs-12">
-					<label for="byZip">Zip Code</label>
-					<input id="byZip" type="text">
-				</div>
-				<div class="col-xs-12">
-					<label for="byGeo">Geo Coordinates</label>
-					<input id="byGeo" type="text">
-				</div>	
-				<div class="col-xs-12">
-					<button type="button" id="weather">Click for the Weather</button>
+					<button type="button" id="getWeather" disabled>Click for the Weather</button>
 				</div>
 			</div>
 		</header>
@@ -44,6 +62,7 @@
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.3.4/chroma.min.js"></script>
 	<script src= "js/app.js" type="text/javascript"></script>
 </body>
 </html>

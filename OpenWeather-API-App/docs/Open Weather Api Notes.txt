@@ -20,10 +20,14 @@ snow:undefined
 
 main: Clear
 desc: clear sky
-Clouds
-broken clouds
+main: Clouds
+desc: clouds
+desc: overcast clouds
+desc: scattered clouds
+desc: few clouds
 main: Rain
 desc: heavy intensity rain
+desc: moderate rain
 main: Drizzle
 desc: light intensity drizzle
 main: Drizzle
@@ -32,6 +36,9 @@ main: Mist
 desc: mist
 main: Haze
 desc: haze
+main: Smoke
+desc: smoke
+
 
 
 lon: 72.85
