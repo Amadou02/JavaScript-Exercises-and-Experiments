@@ -2,45 +2,74 @@
 <html>
 <head>
 	<title>Simple Drawing Application</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" title="no title" charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="http://wallacedaniel.com/MyFontsWebfontsKit.css">
 
-	<link rel="stylesheet" href="http://wallacedaniel.com/css/style.css" type="text/css" media="screen" title="no title" charset="utf-8">
 </head>
-<body>
-	<div class="description">
-		<h2>Simple Drawing Application</h2>
-		<h4>Treehouse.com basic jQuery tutorial from Front End Development Track.</h4>
-	</div>
-	<canvas	width="600" height="400"></canvas>
-	<div class="controls">
-		<ul>
-			<li class="red selected"></li>
-			<li class="blue"></li>
-			<li class="yellow"></li>
-		</ul>
-		<button id="revealColorSelect">New Color</button>
-		<div id="colorSelect">
-			<span id="newColor"></span>
-			<div class="sliders">
-				<p>
-					<label for="red">Red</label>
-					<input id="red" name="red" type="range" min=0 max=255 value=0>
-				</p>
-				<p>
-					<label for="green">Green</label>
-					<input id="green" name="green" type="range" min=0 max=255 value=0>
-				</p>
-				<p>
-					<label for="blue">Blue</label>
-					<input id="blue" name="blue" type="range" min=0 max=255 value=0>
-				</p>
+<body class="container-fluid">
+	<div class="row">
+		<div class="col-xs-3">
+			<div class="controls">
+				<ul>
+					<li class="red selected"></li>
+					<li class="blue"></li>
+					<li class="yellow"></li>
+				</ul>
+				<button id="revealColorSelect">New Color</button>
+				<div id="colorSelect" class="row">
+					<div class="col-xs-4 colorSelectDiv">
+						<span id="newColor"></span>
+						<button id="addNewColor">Add</button>
+					</div>
+					
+					<div class="sliders col-xs-8">
+						<p>
+							<label for="red">Red</label>
+							<input id="red" name="red" type="range" min=0 max=255 value=0>
+						</p>
+						<p>
+							<label for="green">Green</label>
+							<input id="green" name="green" type="range" min=0 max=255 value=0>
+						</p>
+						<p>
+							<label for="blue">Blue</label>
+							<input id="blue" name="blue" type="range" min=0 max=255 value=0>
+						</p>
+					</div>
+					
+				</div>
 			</div>
-			<div>
-			<button id="addNewColor">Add Color</button>
-			</div>
+			
+			<button id="brush">B</button>
+			
+			<button id="canvasBackGrnd">BG</button>
+			
+			<p>
+				<!--Change to Tool Size For reg brush/eraser-->
+				<label style="color:#fff;" for="toolSize">Tool Size</label>
+				<input id="toolSize" name="toolSize" type="range" min=0 max=400 value=0>
+			</p>
+			
+			<p>
+				<label style="color:#fff;" for="brushTrans">Brush Transparency</label>
+				<input id="brushTrans" name="brushTrans" type="range" min=0 max=10 value=0>
+			</p>
+			
+			<button id="eraser">E</button>
+			
+			<button id="path">P</button>
+			
+			<button id="text">T</button>
+			<button id="save">S</button>
+			
+		</div>
+		
+		<div class="col-xs-9">
+			<canvas	id="canvas" width="600" height="400"></canvas>
 		</div>
 	</div>
+	
+	
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/app.js" type="text/javascript" charset="utf-8"></script>	
 </body>

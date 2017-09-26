@@ -2,6 +2,7 @@ body {
 	background: #384047;
 	font-family: sans-serif;
 }
+
 canvas {
 	background: #fff;
 	display: block;
@@ -10,27 +11,25 @@ canvas {
 	box-shadow: 0 4px 0 0 #222;
 	cursor: url(../img/cursor.png), crosshair;
 }
+
 .controls {
-	min-height: 60px;
-	margin: 0 auto 100px;
-	width: 600px;
-	border-radius: 5px;
-	overflow: hidden;
+	padding-top: 10px;
 }
+
 ul {
 	list-style:none;
 	margin: 0;
 	float: 	left;
-	padding: 10px 0 20px;
+	padding: 10px 0 10px;
 	width: 100%;
 	text-align: center;
 }
 
 ul li, #newColor {
 	display:block;
-	height: 54px;
-	width: 54px;
-	border-radius: 60px;
+	height: 40px;
+    width: 40px;
+    border-radius: 4px;
 	cursor: pointer;
 	border: 0;
 	box-shadow: 0 3px 0 0 #222;
@@ -54,27 +53,32 @@ ul li {
 }
 
 .selected {
-	border: 7px solid #fff;
-	width: 40px;
-	height: 40px;
+	border: 4px solid #d2d2d2;
+    width: 40px;
+    height: 40px;
 }
+
 button {
-	background: #68B25B;
-	box-shadow: 0 3px 0 0 #6A845F;
-	color: #fff;
-	outline: none;
-	cursor: pointer;
-	text-shadow: 0 1px #6A845F;
-	display: block;
-	font-size: 16px;
-	line-height: 40px;
+    background: #0d1342;
+    box-shadow: 0 3px 0 0 #5f7484;
+    color: #76d4ff;
+    outline: none;
+    cursor: pointer;
+    text-shadow: 0 1px #5f7484;
+    display: block;
+    font-size: 16px;
+    line-height: 40px;
+    border-radius: 100%;
+    width: 50px;
+    margin-bottom: 6px;
 }
+
 #revealColorSelect {
 	border: none;
 	border-radius: 5px;
 	margin: 10px auto;
 	padding: 5px 20px;
-	width: 160px;
+	width: 120px;
 }
 
 /* New Color Palette */
@@ -82,13 +86,13 @@ button {
 	background: #fff;
 	border-radius: 5px;
 	clear: both;
-	margin: 20px auto 0;
+	margin: 20px auto  14px;;
 	padding: 10px;
-	width: 305px;
 	position: relative;
-		
+	overflow: hidden;	
 	display:none;
 }
+
 #colorSelect:after {
 	bottom: 100%;
 	left: 50%;
@@ -104,6 +108,12 @@ button {
 	margin-left: -10px;
 }
 
+.colorSelectDiv {
+	padding-left: 5px;
+    padding-right: 0;
+    padding-top: 5px;
+}
+
 #newColor {
 	width: 80px;
 	height: 80px;
@@ -111,13 +121,19 @@ button {
 	box-shadow: none;
 	float: left;
 	border: none;
-	margin: 10px 20px 20px 10px;
-
+	margin-bottom: 9px;
 }
+
 .sliders p {
 	margin: 8px 0;
 	vertical-align: middle;
+	margin-top:0;
 }
+
+
+
+	
+
 .sliders label {
 	display: inline-block;
 	margin: 0 10px 0 0;
@@ -125,16 +141,16 @@ button {
 	font-size: 14px;
 	color: #6D574E;
 }
+
 .sliders input {
 	position: relative;
 	top: 2px;
 }
+
 #colorSelect button {
 	border: none;
 	border-top: 1px solid #6A845F;
-	border-radius: 0 0 5px 5px;
+	border-radius: 4px;
 	clear: both;
-	margin: 10px -10px -7px;
-	padding: 5px 10px;
-	width: 325px;
+	width: 96%;
 }

@@ -1,10 +1,21 @@
-// Problem: No user interaction  causes changes to application
-// Solution: User interaction causes appropriate changes
+//brush transparency
+//circle shaped brush
+//extend copyt to circle shaped brush
+//pen..path tool
+//collapsable palette
+//save off a doodle 
+
+
 var color = $(".selected").css("background-color");
 var $canvas = $("canvas");
-var context = $canvas[0].getContext("2d");
+var ctx = $canvas[0].getContext("2d");
 var lastEvent;
 var mouseDown = false;
+var activeTool = "brush";
+
+
+var canvasSave = document.getElementById('canvas');
+var dataURL = canvasSave.toDataURL("image/png");
 
 //when clicking on control list items
 $(".controls").on("click", "li", function(){
@@ -43,6 +54,54 @@ $("#addNewColor").click(function() {
   //Select the new color
   $newColor.click();
 });
+
+$("#canvasBackGrnd").click(function() {
+	
+	var $bgColor = $('.selected').css("background-color");
+	
+	$('canvas').css( "background", $bgColor )
+	
+});
+
+
+//setTool() function 
+//set brush to default
+$("#brush").click(function() {
+	activeTool = "brush";	
+});
+
+$("#eraser").click(function() {
+	activeTool = "eraser";	
+});
+
+$("#path").click(function() {
+	activeTool = "path";	
+});
+
+$("#text").click(function() {
+	activeTool = "text";	
+});
+
+
+
+
+$("#save").click(function() {
+	console.log(dataURL);
+	//document.write('<img src="'+dataURL+'"/>')
+});
+
+
+
+
+function copy()
+{
+	var imgData = ctx.getImageData(0, 0, 600, 400);
+	ctx.putImageData(imgData, 300, 200);
+}
+
+
+
+
   
 //On mouse events on the canvas
 $canvas.mousedown(function(e){
@@ -51,21 +110,65 @@ $canvas.mousedown(function(e){
 }).mousemove(function(e){
   // Draw lines
   if (mouseDown) {
-    context.beginPath();
-    context.moveTo(lastEvent.offsetX, lastEvent.offsetY);
-    context.lineTo(e.offsetX, e.offsetY);
-    context.strokeStyle = color;
-    context.stroke();
+	  
+	  
+    
+	
+	var $transp = $('#brushTrans').val()*.1;
+	var $toolSize = $('#toolSize').val();
+	
+	
+    
+	
+	if(activeTool == "brush"){	
+		//change color above to rgba to add trap to brush
+		ctx.beginPath();
+		ctx.moveTo(lastEvent.offsetX, lastEvent.offsetY);
+		ctx.lineTo(e.offsetX, e.offsetY);
+		
+		ctx.strokeStyle = color;
+		ctx.lineWidth = $toolSize;
+	}
+	
+	if(activeTool == "eraser"){
+		ctx.beginPath();
+		ctx.moveTo(lastEvent.offsetX, lastEvent.offsetY);
+		ctx.lineTo(e.offsetX, e.offsetY);
+		
+		ctx.globalCompositeOperation = "destination-out";
+		ctx.strokeStyle = "rgba(0,0,0," + $transp +")";
+		ctx.lineWidth = $toolSize;
+	}
+	
+	if(activeTool == "path"){
+		$("canvas").click(function() {
+			var coord = getCursorPosition(canvas, event);
+			ctx.strokeStyle = color;
+			ctx.fillStyle="#000";
+			console.log("x: " + coord[0] + " y: " + coord[1]);
+			ctx.fillRect( coord[0], coord[1], 1, 1 );
+		});
+	}
+	
+	ctx.stroke();
     lastEvent = e;
+	
    }
 }).mouseup(function(){
-  mouseDown = false;
+	mouseDown = false; 
 }).mouseleave(function(){
-  $canvas.mouseup();
+	$canvas.mouseup();
 }).mouseenter(function(){
-  $canvas.mousedown();
+	$canvas.mousedown();
 });
 
+// retrieves the cursors position on the canvas 
+function getCursorPosition(canvas, event) {
+    var rect = canvas.getBoundingClientRect();
+    var x = event.clientX - rect.left;
+    var y = event.clientY - rect.top;
+	return [x, y]
+}
   
 
 
